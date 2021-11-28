@@ -41,16 +41,12 @@ let add_pill = (_image, _name, _effect, _dosage, _caution, _take, _maker) => {
 
 // 특정 알약 삭제
 let delete_pill = (_name) => {
-  realm.write(()=>{
-    realm.delete(get_sepcific_pills(_name))
-  })
+  realm.write(()=>{realm.delete(get_sepcific_pills(_name))})
 }
 
 // 모든 알약 정보 삭제
 let delete_all = () => {
-  realm.write(()=>{
-    realm.delete(get_all_pills())
-  })
+  realm.write(()=>{realm.delete(get_all_pills())})
 }
 
 export default realm
