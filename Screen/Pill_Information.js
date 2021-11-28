@@ -9,7 +9,6 @@ import DataBase, {get_all_pills, add_pill, delete_pill, delete_all, get_sepcific
 // 화면 구성을 위한 컴포넌트
 import {SafeAreaView, TouchableOpacity, Text, StyleSheet, ToastAndroid, FlatList, Image, ScrollView} from 'react-native'
 
-
 // 알약 정보 저장
 function Save_pill(props){
   // DB로 부터 특정한 알약 정보 추출

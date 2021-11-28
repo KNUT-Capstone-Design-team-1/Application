@@ -10,7 +10,6 @@ import * as Search_Pill from './Search_Pill'
 // 화면 구성 컴포넌트
 import { SafeAreaView, TouchableOpacity, Text, StyleSheet, Image, ToastAndroid} from 'react-native'
 
-
 export default function Check_Pic(props){
   // 화면 이동을 위한 네비게이션 선언
   const {navigation} = props

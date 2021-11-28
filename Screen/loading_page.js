@@ -7,7 +7,6 @@ import {createStackNavigator} from '@react-navigation/stack'
 // 화면 구성을 위한 컴포넌트
 import {SafeAreaView, Text, StyleSheet, ToastAndroid, Image} from 'react-native'
 
-
 // 메인 서버로의 데이터 전송
 async function Send_img(props){
   // 메시지 출력

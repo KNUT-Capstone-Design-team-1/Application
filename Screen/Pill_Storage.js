@@ -30,7 +30,6 @@ async function Look_Pill_Info(props){
   navigation.navigate('Pill_Information')
 }
 
-
 export default function Pill_Storage(props){
   // 화면 이동을 위한 네비게이션 선언
   const {navigation} = props
