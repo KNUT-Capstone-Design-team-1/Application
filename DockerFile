@@ -5,7 +5,7 @@ FROM openJDK:8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # essential utility install
-RUN apt-get update && apt-get install -y unzip wget vim
+RUN apt-get update && apt-get install -y unzip wget vim curl
 
 # install gradle 7.2 & environment variable setting
 ADD https://services.gradle.org/distributions/gradle-7.2-all.zip /opt/
@@ -13,14 +13,30 @@ RUN unzip /opt/gradle-7.2-all.zip -d /opt/gradle
 ENV GRADLE_HOME /opt/gradle/gradle-7.2
 ENV PATH $GRADLE_HOME/bin:$PATH
 
-# Add Tini (process optimize on container)
-# gpg = encryption tool
-ENV TINI_VERSION v0.19.0
-COPY tini_pub.gpg ${JENKINS_HOME}/tini_pub.gpg
-RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-$(dpkg --print-architecture) -o /sbin/tini \
- && curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-$(dpkg --print-architecture).asc -o /sbin/tini.asc \
- && gpg --no-tty --import ${JENKINS_HOME}/tini_pub.gpg \
- && gpg --verify /sbin/tini.asc \
- && rm -rf /sbin/tini.asc /root/.gnupg \
- && chmod +x /sbin/tini
+# install android SDK & environment variable setting
+RUN apt-get install -y mc && mkdir /var/android-sdk
+ADD https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip /var/
+RUN unzip /opt/commandlinetools-linux-7583922_latest.zip -d /var/android-sdk
+ENV ANDROID_HOME /var/android-sdk/
+ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+RUN chmod -R 755 $ANDROID_HOME
+RUN rm -r /var/commandlinetools-linux-7583922_latest.zip
+
+RUN yes | /var/android-sdk/tools/bin/sdkmanager --update
+RUN yes | /var/android-sdk/tools/bin/sdkmanager --licenses
+RUN yes | /var/android-sdk/tools/bin/sdkmanager --list
+RUN yes | /var/android-sdk/tools/bin/sdkmanager \
+"tools" \
+"platform-tools" \
+"platforms;android-30" \
+"build-tools;30.0.0" \
+"build-tools;30.0.1" \
+"build-tools;30.0.2" \
+"build-tools;30.0.3" \
+"platforms;android-29" \
+"build-tools;29.0.0" \
+"build-tools;29.0.1" \
+"build-tools;29.0.2" \
+"extras;android;m2repository" \
+"extras;google;m2repository"
 
