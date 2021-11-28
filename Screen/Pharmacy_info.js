@@ -9,7 +9,6 @@ import {WebView} from 'react-native-webview'
 // 화면을 구성하는 컴포넌트
 import { SafeAreaView, TouchableOpacity, Text, StyleSheet, Image} from 'react-native'
 
-
 export default function Pharmacy_Info(props){
   // 화면 이동을 위한 네비게이션 선언
   const {navigation} = props;
