@@ -10,7 +10,6 @@ import {launchCamera, launchImageLibrary, ImagePicker} from 'react-native-image-
 // 화면 구성을 위한 컴포넌트
 import {SafeAreaView, TouchableOpacity, Text, StyleSheet, Image, ToastAndroid} from 'react-native'
 
-
 // 카메라 실행
 export function camera(props){
   // 카메라 실행 관련 옵션

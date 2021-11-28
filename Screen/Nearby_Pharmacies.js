@@ -9,7 +9,6 @@ import { SafeAreaView, TouchableOpacity, Text, StyleSheet, FlatList, Image} from
 // 선택한 약국의 정보가 적힌 kakao map 주소
 global.pharm_url=''
 
-
 export default function Nearby_Pharmacies(props){
   // 화면 이동을 위한 네비게이션 선언
   const {navigation} = props;
