@@ -1,4 +1,4 @@
-package com.whatispill;
+package com.wip;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;
