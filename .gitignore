@@ -60,5 +60,6 @@ buck-out/
 
 # keystore
 .keystore
+.jks
 
 package-lock.json
