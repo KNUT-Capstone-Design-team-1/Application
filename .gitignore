@@ -63,3 +63,4 @@ buck-out/
 .jks
 
 package-lock.json
+android/app/wip.jks
