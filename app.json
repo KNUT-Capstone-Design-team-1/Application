@@ -1,4 +1,9 @@
 {
-  "name": "whatispill",
-  "displayName": "이게뭐약"
+  "expo": {
+    "name": "WhatIsPill",
+    "slug": "WhatIsPill",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"]
+  },
+  "name": "WhatIsPill"
 }

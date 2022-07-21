@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">이게뭐약</string>
+    <string name="app_name">WhatIsPill</string>
+    <string name="kakao_app_key">56b238bc902bfeff129854475cf1b9e5</string>
 </resources>

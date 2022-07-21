@@ -1,0 +1,191 @@
+{
+  "drugs_forms": {
+    "name": "제형정보",
+    "items": [
+      {
+        "id": "tablet_capsule",
+        "name": "정제"
+      },
+      {
+        "id": "hard_capsule",
+        "name": "경질"
+      },
+      {
+        "id": "soft_capsule",
+        "name": "연질"
+      },
+      {
+        "id": "other_capsule",
+        "name": "기타"
+      },
+      {
+        "id": "whole_capsule",
+        "name": "전체"
+      }
+    ]
+  },
+  "drugs_shape": {
+    "name": "모양정보",
+    "items": [
+      {
+        "id": "circle",
+        "name": "원형"
+      },
+      {
+        "id": "oval",
+        "name": "타원형"
+      },
+      {
+        "id": "semicircle",
+        "name": "반원형"
+      },
+      {
+        "id": "triangle",
+        "name": "삼각형"
+      },
+      {
+        "id": "square",
+        "name": "사각형"
+      },
+      {
+        "id": "rhombus",
+        "name": "마름모"
+      },
+      {
+        "id": "rectangle",
+        "name": "장방형"
+      },
+      {
+        "id": "pentagon",
+        "name": "오각형"
+      },
+      {
+        "id": "hexagon",
+        "name": "육각형"
+      },
+      {
+        "id": "octagon",
+        "name": "팔각형"
+      },
+      {
+        "id": "other_shape",
+        "name": "기타"
+      },
+      {
+        "id": "whole_shape",
+        "name": "전체"
+      }
+    ]
+  },
+  "drugs_colors": {
+    "name": "색상정보",
+    "items": [
+      {
+        "id": "white",
+        "name": "하양"
+      },
+      {
+        "id": "yellow",
+        "name": "노랑"
+      },
+      {
+        "id": "orange",
+        "name": "주황",
+        "color": "#ffa500"
+      },
+      {
+        "id": "pink",
+        "name": "분홍",
+        "color": "#ff69b4"
+      },
+      {
+        "id": "red",
+        "name": "빨강",
+        "color": "#ff0000"
+      },
+      {
+        "id": "brown",
+        "name": "갈색",
+        "color": "#b45f06"
+      },
+      {
+        "id": "lightgreen",
+        "name": "연두",
+        "color": "#81c147"
+      },
+      {
+        "id": "green",
+        "name": "초록",
+        "color": "#008000"
+      },
+      {
+        "id": "bluegreen",
+        "name": "청록",
+        "color": "#0d98ba"
+      },
+      {
+        "id": "blue",
+        "name": "파랑",
+        "color": "#0000ff"
+      },
+      {
+        "id": "indigo",
+        "name": "남색",
+        "color": "#000080"
+      },
+      {
+        "id": "violet",
+        "name": "자주",
+        "color": "#d02090"
+      },
+      {
+        "id": "purple",
+        "name": "보라",
+        "color": "#800080"
+      },
+      {
+        "id": "gray",
+        "name": "회색",
+        "color": "#808080"
+      },
+      {
+        "id": "black",
+        "name": "검정",
+        "color": "#000000"
+      },
+      {
+        "id": "transparent",
+        "name": "투명"
+      },
+      {
+        "id": "other_color",
+        "name": "전체"
+      }
+    ]
+  },
+  "drugs_score": {
+    "name": "분할선",
+    "items": [
+      {
+        "id": "no_scored",
+        "name": "없음"
+      },
+      {
+        "id": "single_scored",
+        "name": "(-)형"
+      },
+      {
+        "id": "double_scored",
+        "name": "(+)형"
+      },
+      {
+        "id": "other_scored",
+        "name": "기타"
+      },
+      {
+        "id": "whole_scored",
+        "name": "전체"
+      }
+    ]
+  }
+}
