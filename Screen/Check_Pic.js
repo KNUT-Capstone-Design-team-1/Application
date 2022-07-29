@@ -4,6 +4,9 @@ import * as React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 
+//반응형 크기 조절
+import {RFValue} from 'react-native-responsive-fontsize';
+
 // 재촬영 및 갤러리 사진 재선택을 위한 모듈 포함
 import * as Search_Pill from './Search_Pill'
 

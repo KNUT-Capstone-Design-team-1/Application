@@ -4,6 +4,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+//반응형 크기 조절
 import {RFValue} from 'react-native-responsive-fontsize';
 
 // 카메라 및 갤러리 실행을 위한 라이브러리

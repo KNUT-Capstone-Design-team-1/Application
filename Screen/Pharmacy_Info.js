@@ -6,6 +6,9 @@ import {createStackNavigator} from '@react-navigation/stack'
 // kakao map을 이용한 약국 정보를 띄울 웹 뷰 라이브러리
 import {WebView} from 'react-native-webview'
 
+//반응형 크기 조절
+import {RFValue} from 'react-native-responsive-fontsize';
+
 // 화면을 구성하는 컴포넌트
 import { SafeAreaView, TouchableOpacity, Text, StyleSheet, Image} from 'react-native'
 

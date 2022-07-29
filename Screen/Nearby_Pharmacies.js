@@ -3,6 +3,9 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+//반응형 크기 조절
+import {RFValue} from 'react-native-responsive-fontsize';
+
 // 화면을 구성하는 컴포넌트
 import {
   SafeAreaView,

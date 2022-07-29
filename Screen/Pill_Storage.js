@@ -6,6 +6,9 @@ import {createStackNavigator} from '@react-navigation/stack'
 // Realm 데이터베이스에 저장하기 위한 DB파일 모듈
 import DataBase, {get_all_pills, get_sepcific_pills} from './Database'
 
+//반응형 크기 조절
+import {RFValue} from 'react-native-responsive-fontsize';
+
 // 전체 화면을 구성하는 컴포넌트
 import {SafeAreaView, TouchableOpacity, Text, StyleSheet, ToastAndroid, FlatList, Image} from 'react-native'
 

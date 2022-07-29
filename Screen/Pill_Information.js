@@ -6,6 +6,9 @@ import {createStackNavigator} from '@react-navigation/stack'
 // 알약 정보 저장 및 삭제를 위한 DB 모듈
 import DataBase, {get_all_pills, add_pill, delete_pill, delete_all, get_sepcific_pills} from './Database'
 
+//반응형 크기 조절
+import {RFValue} from 'react-native-responsive-fontsize';
+
 // 화면 구성을 위한 컴포넌트
 import {SafeAreaView, TouchableOpacity, Text, StyleSheet, ToastAndroid, FlatList, Image, ScrollView} from 'react-native'
 
