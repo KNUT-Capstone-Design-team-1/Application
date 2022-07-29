@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   // 텍스트 레이아웃
   txt_st:{
     color:'white', 
-    fontSize:30, 
+    fontSize:RFValue(30, 720), 
     fontFamily:'Jua-Regular', 
   },
 })

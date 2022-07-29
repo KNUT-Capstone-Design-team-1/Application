@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: '4%',
     backgroundColor: '#BDECB6',
-    borderRadius: 8,
+    borderRadius: RFValue(8, 720),
   },
   // Flat List에 생성되는 버튼 디자인
   list_st: {
@@ -92,12 +92,12 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 8,
+    borderRadius: RFValue(8, 720),
   },
   // 약국 이름 목록 텍스트 레이아웃
   pharm_name: {
     color: 'black',
-    fontSize: 30,
+    fontSize: RFValue(30, 720),
     fontFamily: 'Jua-Regular',
   },
   // 메인 화면 이동 버튼 레이아웃
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   // 전체적인 텍스트 레이아웃
   txt_st: {
     color: 'white',
-    fontSize: 30,
+    fontSize: RFValue(30, 720),
     fontFamily: 'Jua-Regular',
   },
 });

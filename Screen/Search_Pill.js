@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   // 헤더 텍스트 디자인
   header_txt: {
     color: 'white',
-    fontSize: 30,
+    fontSize: RFValue(30, 720),
     fontFamily: 'Jua-Regular',
   },
   // 예시 이미지 레이아웃
@@ -180,8 +180,8 @@ const styles = StyleSheet.create({
     // fontSize: 21,
     fontWeight: 'bold',
     fontFamily: 'NanumSquareEB',
-    borderWidth: 2,
-    borderRadius: 8,
+    borderWidth: RFValue(2, 720),
+    borderRadius: RFValue(8, 720),
     backgroundColor: '#BDECB6',
   },
   // 버튼 컨테이너 레이아웃
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     height: '25%',
     width: '45%',
     margin: '2%',
-    borderRadius: 5,
+    borderRadius: RFValue(5, 720),
     justifyContent: 'center',
     alignItems: 'center',
   },

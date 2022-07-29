@@ -135,13 +135,13 @@ const styles = StyleSheet.create({
     width:'33%',
     justifyContent:'center',
     alignItems:'center',
-    borderWidth:2,
-    borderRadius:8,
+    borderWidth:RFValue(2, 720),
+    borderRadius:RFValue(8, 720),
   },
   // 알약 정보 텍스트 레이아웃
   item_txt_st:{
     color:'black', 
-    fontSize:20, 
+    fontSize:RFValue(20, 720), 
     fontFamily:'NanumGothicBold',
     padding:'2%',
     backgroundColor:'#BDECB6',
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   // 텍스트 레이아웃
   txt_st:{
     color:'white', 
-    fontSize:35, 
+    fontSize:RFValue(35, 720), 
     fontFamily:'Jua-Regular', 
   },
 })

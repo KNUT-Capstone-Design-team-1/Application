@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   // 헤더 텍스트 레이아웃
   header_txt:{
     color:'white',
-    fontSize:30,
+    fontSize:RFValue(30, 720),
     fontFamily:'Jua-Regular', 
   },
   // 저장된 알약 이름을 보여주는 리스트의 레이아웃
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     flex:1,
     margin:'3%',
     backgroundColor:'#BDECB6',
-    borderRadius:8,
+    borderRadius:RFValue(8, 720),
   },
   // 알약 이름이 출력되는 Flat list의 버튼 레이아웃
   List_st:{
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     width:'100%',
     justifyContent:'center',
     alignItems:'center',
-    borderRadius:8,
+    borderRadius:RFValue(8, 720),
   },
   // 내 주변 약국 및 메인 화면 이동 버튼 레이아웃
   opacity_st:{
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   // 텍스트 레이아웃
   txt_st:{
     color:'black',
-    fontSize:30,
+    fontSize:RFValue(30, 720),
     fontFamily:'Jua-Regular', 
   },
 })

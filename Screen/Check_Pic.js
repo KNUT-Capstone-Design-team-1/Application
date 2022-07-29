@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   // 전체적인 텍스트 레이아웃
   txt_st:{
     color:'white',
-    fontSize:35,
+    fontSize:RFValue(35, 720),
     fontFamily:'Jua-Regular',
   },
 })
