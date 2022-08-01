@@ -110,7 +110,10 @@ export default function Search_Pill(props) {
       </SafeAreaView>
 
       {/* 예시 이미지 */}
-      <Image style={styles.photo_st} source={{uri: img_uri}} />
+      <Image
+        style={styles.photo_st}
+        source={require('../image/sample_img.jpg')}
+      />
 
       {/* 안내사항 */}
       <Text style={styles.description_txt}>

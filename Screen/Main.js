@@ -37,8 +37,7 @@ export default function Main(props) {
         onPress={() => {
           navigation.navigate('Search_Pill');
           pill_managing_sw = 0;
-          img_uri =
-            'https://user-images.githubusercontent.com/33280934/119253999-db40ce00-bbee-11eb-8757-1be2fc2702cb.jpg';
+          img_uri = '';
         }}>
         <Image
           style={styles.btn_st}
