@@ -1,5 +1,5 @@
 {
-  "name": "wip",
+  "name": "whatispill",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -18,9 +18,9 @@
     "npm": "^7.12.1",
     "react": "17.0.1",
     "react-native": "^0.64.1",
+    "react-native-geolocation-service": "^5.3.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-image-picker": "^3.6.0",
-    "react-native-location": "^2.5.0",
     "react-native-permissions": "^3.0.3",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^3.2.0",
