@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  ToastAndroid,
-  Image,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, ToastAndroid, Image} from 'react-native';
 
 async function Send_img(props) {
   ToastAndroid.showWithGravity(
@@ -64,8 +56,6 @@ async function Send_img(props) {
 }
 
 export default function loading_page(props) {
-  const {navigation} = props;
-
   Send_img(props);
   return (
     // 로딩 이미지 출력

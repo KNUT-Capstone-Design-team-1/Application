@@ -1,6 +1,4 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import {RFValue} from 'react-native-responsive-fontsize';
 import * as Search_Pill from './Search_Pill';
 import {
@@ -9,7 +7,6 @@ import {
   Text,
   StyleSheet,
   Image,
-  ToastAndroid,
 } from 'react-native';
 
 export default function Check_Pic(props) {

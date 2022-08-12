@@ -3,7 +3,6 @@ import {useEffect} from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 import {ToastAndroid, PermissionsAndroid, Text} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import Main from './Screen/Main';

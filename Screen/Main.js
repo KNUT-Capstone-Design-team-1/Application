@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  Text,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import {SafeAreaView, TouchableOpacity, Image, StyleSheet} from 'react-native';
 
 global.img_uri = ''; // 화면에 표시되는 이미지의 주소
 global.img_base64 = ''; // json에 첨부될 base64

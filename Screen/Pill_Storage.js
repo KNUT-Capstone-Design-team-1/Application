@@ -1,14 +1,11 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import DataBase, {get_all_pills, get_sepcific_pills} from './Database';
+import {get_all_pills, get_sepcific_pills} from './Database';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {
   SafeAreaView,
   TouchableOpacity,
   Text,
   StyleSheet,
-  ToastAndroid,
   FlatList,
   Image,
 } from 'react-native';

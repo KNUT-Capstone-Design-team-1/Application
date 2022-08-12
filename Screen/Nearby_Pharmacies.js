@@ -1,6 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {NavigationContainer, useFocusEffect} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {useFocusEffect} from '@react-navigation/native';
 import Geolocation from 'react-native-geolocation-service';
 import {RFValue} from 'react-native-responsive-fontsize';
 

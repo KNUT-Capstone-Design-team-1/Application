@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import DataBase, {
-  get_all_pills,
+import {
   add_pill,
   delete_pill,
   delete_all,
@@ -15,7 +12,6 @@ import {
   Text,
   StyleSheet,
   ToastAndroid,
-  FlatList,
   Image,
   ScrollView,
 } from 'react-native';
