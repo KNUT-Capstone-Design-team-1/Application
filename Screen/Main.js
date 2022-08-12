@@ -1,10 +1,6 @@
 import * as React from 'react';
-
-// 화면 이동을 위한 라이브러리
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
-// 화면 구성을 위한 컴포넌트
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -13,14 +9,12 @@ import {
   StyleSheet,
 } from 'react-native';
 
-// 앱 내에서 사용되는 전역변수
 global.img_uri = ''; // 화면에 표시되는 이미지의 주소
 global.img_base64 = ''; // json에 첨부될 base64
 global.p_data = ''; // 알약에 대한 데이터
 global.pill_managing_sw = 0; // Pill Storage에서 저장 버튼과 삭제 버튼을 전환하는 스위치
 
 export default function Main(props) {
-  // 화면 이동을 위한 네비게이션 선언
   const {navigation} = props;
 
   return (

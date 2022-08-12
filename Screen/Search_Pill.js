@@ -1,16 +1,8 @@
 import * as React from 'react';
-
-// 화면 이동을 위한 라이브러리
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
-//반응형 크기 조절
 import {RFValue} from 'react-native-responsive-fontsize';
-
-// 카메라 및 갤러리 실행을 위한 라이브러리
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-
-// 화면 구성을 위한 컴포넌트
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -22,19 +14,17 @@ import {
 
 // 카메라 실행
 export function camera(props) {
-  // 카메라 실행 관련 옵션
   const options = {
     mediaType: 'photo',
     cameraType: 'front',
     saveToPhotos: true,
     includeBase64: true,
   };
-  // 카메라 실행 및 예외처리
+
   try {
     launchCamera(options, uri => {
-      // 화면 이동을 위한 네비게이션 선언
       const {navigation} = props;
-      // 촬영한 이미지 base64 변환
+
       if (uri.uri != null) {
         img_uri = uri.uri;
         img_base64 = uri.base64;
@@ -42,13 +32,13 @@ export function camera(props) {
       }
     });
   } catch (e) {
-    if (e == 'camera_unavailable') {
+    if (e === 'camera_unavailable') {
       ToastAndroid.showWithGravity(
         '카메라를 사용할 수 없습니다',
         ToastAndroid.LONG,
         ToastAndroid.BOTTOM,
       );
-    } else if (e == 'permission') {
+    } else if (e === 'permission') {
       ToastAndroid.showWithGravity(
         '앱의 카메라 권한을 허용해주세요.',
         ToastAndroid.LONG,
@@ -66,18 +56,16 @@ export function camera(props) {
 
 // 갤러리 실행
 export function gallery(props) {
-  // 갤러리 관련 옵션
   const options = {
     mediaType: 'photo',
     quality: 1,
     includeBase64: true,
   };
-  // 갤러리 실행 및 예외처리
+
   try {
     launchImageLibrary(options, uri => {
-      // 화면 이동을 위한 네비게이션 선언
       const {navigation} = props;
-      // 선택한 이미지 base64 변환
+
       if (uri.uri != null) {
         img_uri = uri.uri;
         img_base64 = uri.base64;
@@ -85,7 +73,7 @@ export function gallery(props) {
       }
     });
   } catch (e) {
-    if (e == 'permission') {
+    if (e === 'permission') {
       ToastAndroid.showWithGravity(
         '앱의 권한을 허용해주세요.',
         ToastAndroid.LONG,

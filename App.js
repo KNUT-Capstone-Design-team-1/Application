@@ -1,19 +1,11 @@
 import * as React from 'react';
 import {useEffect} from 'react';
-
-// 화면 이동
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
-// 네이티브 권한 취득 라이브러리
 import {PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 import {ToastAndroid, PermissionsAndroid, Text} from 'react-native';
-
-// 앱 실행시 실행되는 스플래시 이미지
 import SplashScreen from 'react-native-splash-screen';
-
-// 앱 구성 화면 파일
 import Main from './Screen/Main';
 import Check_Pic from './Screen/Check_Pic';
 import Search_Pill from './Screen/Search_Pill';
@@ -26,12 +18,11 @@ import Loading_Page from './Screen/Loading_Page';
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
 
-// 화면 이동을 위한 스택 선언
 const Stack = createStackNavigator();
 
 // 카메라, 내ㆍ외장 스토리지, GPS 권한 요청
 async function requestPermission() {
-  const granted = await PermissionsAndroid.requestMultiple([
+  PermissionsAndroid.requestMultiple([
     // 안드로이드 카메라 촬영 권한
     PermissionsAndroid.PERMISSIONS.CAMERA,
     // 안드로이드 외장 스토리지 쓰기 권한
@@ -66,16 +57,16 @@ async function requestPermission() {
   });
 }
 
-// 화면 이동을 위한 Stack
 export default function App() {
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
     }, 2500);
   });
+
   requestPermission();
+
   return (
-    // 화면을 스택에 올리는 네비게이션 컨테이너
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Main">
         <Stack.Screen

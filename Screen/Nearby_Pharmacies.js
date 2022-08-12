@@ -1,15 +1,9 @@
 import React, {useCallback, useState} from 'react';
-// 화면 이동을 위한 라이브러리
 import {NavigationContainer, useFocusEffect} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
-// 현재 위치 파악을 위한 라이브러리
 import Geolocation from 'react-native-geolocation-service';
-
-//반응형 크기 조절
 import {RFValue} from 'react-native-responsive-fontsize';
 
-// 화면을 구성하는 컴포넌트
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -24,8 +18,6 @@ global.pharm_url = '';
 
 export default function Nearby_Pharmacies(props) {
   const [pharmMap, setPharmMap] = useState();
-
-  // 화면 이동을 위한 네비게이션 선언
   const {navigation} = props;
 
   useFocusEffect(
