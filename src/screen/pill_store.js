@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {get_all_pills, get_sepcific_pills} from './Database';
+import {getAllPills} from '../database/queries/pill_search';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {
   SafeAreaView,
@@ -9,31 +9,16 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+import {getPillInfo} from '../services/pill_store';
 
 // 선택한 알약의 이름
 global.ref_name = '';
 
-// 선택한 알약의 정보 출력
-async function Look_Pill_Info(props) {
-  const {navigation} = props;
-
-  pill_managing_sw = 1;
-
-  // DBMS로 부터 선택한 알약에 대한 정보 로드
-  const ref_info_tmp = await get_sepcific_pills(ref_name);
-
-  // 전역 변수인 알약 정보에 DB로 부터 받은 특정한 알약의 데이터를 Mapping
-  p_data = ref_info_tmp.map(item => item);
-
-  // 알약 정보화면으로 이동
-  navigation.navigate('Pill_Information');
-}
-
-export default function Pill_Storage(props) {
+export default function PillStore(props) {
   const {navigation} = props;
 
   // 저장된 알약의 데이터 Loading
-  const stored_pill_list = get_all_pills();
+  const stored_pill_list = getAllPills();
 
   // 알약의 데이터 중 이름만 추출하여 Mapping
   const stored_pill_name = stored_pill_list.map(tmp => ({name: tmp.name}));
@@ -45,7 +30,7 @@ export default function Pill_Storage(props) {
       <TouchableOpacity
         style={styles.List_st}
         onPress={() => {
-          (ref_name = item.name), Look_Pill_Info(props);
+          (ref_name = item.name), getPillInfo(props);
         }}>
         <Text style={styles.txt_st}>{item.name}</Text>
       </TouchableOpacity>
@@ -65,20 +50,20 @@ export default function Pill_Storage(props) {
       {/* 내 주변 약국 화면 이동 버튼 */}
       <TouchableOpacity
         style={styles.opacity_st}
-        onPress={() => navigation.navigate('Nearby_Pharmacies')}>
+        onPress={() => navigation.navigate('nearbyPharmacy')}>
         <Image
           style={styles.btn_st}
-          source={require('../image/nearby_pharmacy_long.png')}
+          source={require('../../image/nearby_pharmacy_long.png')}
         />
       </TouchableOpacity>
 
       {/* 메인 화면 이동 버튼 */}
       <TouchableOpacity
         style={styles.opacity_st}
-        onPress={() => navigation.navigate('Main')}>
+        onPress={() => navigation.navigate('main')}>
         <Image
           style={styles.btn_st}
-          source={require('../image/main_long.png')}
+          source={require('../../image/main_long.png')}
         />
       </TouchableOpacity>
     </SafeAreaView>

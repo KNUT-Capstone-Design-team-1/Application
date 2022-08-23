@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 
-export default function Pharmacy_Info(props) {
+export default function PharmacyInfo(props) {
   const {navigation} = props;
 
   return (
@@ -18,8 +18,11 @@ export default function Pharmacy_Info(props) {
       <SafeAreaView style={styles.header}>
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => navigation.navigate('Nearby_Pharmacies')}>
-          <Image style={styles.btn_st} source={require('../image/back.png')} />
+          onPress={() => navigation.navigate('nearbyPharmacy')}>
+          <Image
+            style={styles.btn_st}
+            source={require('../../image/back.png')}
+          />
         </TouchableOpacity>
         {/* 헤더 텍스트 */}
         <Text style={styles.txt_st}>약국 정보</Text>

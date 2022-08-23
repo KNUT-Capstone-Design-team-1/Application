@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {RFValue} from 'react-native-responsive-fontsize';
-import * as Search_Pill from './Search_Pill';
+import * as pillSearch from './pill_search';
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 
-export default function Check_Pic(props) {
+export default function PictureCheck(props) {
   const {navigation} = props;
 
   return (
@@ -26,29 +26,32 @@ export default function Check_Pic(props) {
       <TouchableOpacity
         style={styles.btn_layer_1}
         onPress={() => {
-          navigation.navigate('Loading_Page'), (pill_managing_sw = 0);
+          navigation.navigate('loading'), (pill_managing_sw = 0);
         }}>
-        <Image style={styles.btn_st} source={require('../image/search.png')} />
+        <Image
+          style={styles.btn_st}
+          source={require('../../image/search.png')}
+        />
       </TouchableOpacity>
 
       <SafeAreaView style={styles.btn_layer_2}>
         {/* 재촬영 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => Search_Pill.camera(props)}>
+          onPress={() => pillSearch.camera(props)}>
           <Image
             style={styles.btn_st}
-            source={require('../image/recamera.png')}
+            source={require('../../image/recamera.png')}
           />
         </TouchableOpacity>
 
         {/* 갤러리 재선택 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => Search_Pill.gallery(props)}>
+          onPress={() => pillSearch.gallery(props)}>
           <Image
             style={styles.btn_st}
-            source={require('../image/gallery.png')}
+            source={require('../../image/gallery.png')}
           />
         </TouchableOpacity>
       </SafeAreaView>
@@ -56,8 +59,8 @@ export default function Check_Pic(props) {
       {/* 메인 화면 이동 */}
       <TouchableOpacity
         style={styles.btn_layer_3}
-        onPress={() => navigation.navigate('Main')}>
-        <Image style={styles.btn_st} source={require('../image/main.png')} />
+        onPress={() => navigation.navigate('main')}>
+        <Image style={styles.btn_st} source={require('../../image/main.png')} />
       </TouchableOpacity>
     </SafeAreaView>
   );

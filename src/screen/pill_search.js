@@ -1,93 +1,15 @@
 import * as React from 'react';
 import {RFValue} from 'react-native-responsive-fontsize';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {
   SafeAreaView,
   TouchableOpacity,
   Text,
   StyleSheet,
   Image,
-  ToastAndroid,
 } from 'react-native';
+import {executeCamera, executeGallery} from '../services/pill_search';
 
-// 카메라 실행
-export function camera(props) {
-  const options = {
-    mediaType: 'photo',
-    cameraType: 'front',
-    saveToPhotos: true,
-    includeBase64: true,
-  };
-
-  try {
-    launchCamera(options, uri => {
-      const {navigation} = props;
-
-      if (uri.uri != null) {
-        img_uri = uri.uri;
-        img_base64 = uri.base64;
-        navigation.replace('Check_Pic');
-      }
-    });
-  } catch (e) {
-    if (e === 'camera_unavailable') {
-      ToastAndroid.showWithGravity(
-        '카메라를 사용할 수 없습니다',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-      );
-    } else if (e === 'permission') {
-      ToastAndroid.showWithGravity(
-        '앱의 카메라 권한을 허용해주세요.',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-      );
-    } else {
-      ToastAndroid.showWithGravity(
-        `오류코드 : ${e}`,
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-      );
-    }
-  }
-}
-
-// 갤러리 실행
-export function gallery(props) {
-  const options = {
-    mediaType: 'photo',
-    quality: 1,
-    includeBase64: true,
-  };
-
-  try {
-    launchImageLibrary(options, uri => {
-      const {navigation} = props;
-
-      if (uri.uri != null) {
-        img_uri = uri.uri;
-        img_base64 = uri.base64;
-        navigation.replace('Check_Pic');
-      }
-    });
-  } catch (e) {
-    if (e === 'permission') {
-      ToastAndroid.showWithGravity(
-        '앱의 권한을 허용해주세요.',
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-      );
-    } else {
-      ToastAndroid.showWithGravity(
-        `오류코드 : ${e}`,
-        ToastAndroid.LONG,
-        ToastAndroid.BOTTOM,
-      );
-    }
-  }
-}
-
-export default function Search_Pill(props) {
+export default function PillSearch(props) {
   return (
     <SafeAreaView style={styles.container}>
       {/* 헤더 */}
@@ -98,7 +20,7 @@ export default function Search_Pill(props) {
       {/* 예시 이미지 */}
       <Image
         style={styles.photo_st}
-        source={require('../image/sample_img.jpg')}
+        source={require('../../image/sample_img.jpg')}
       />
 
       {/* 안내사항 */}
@@ -112,20 +34,20 @@ export default function Search_Pill(props) {
         {/* 촬영 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => camera(props)}>
+          onPress={() => executeCamera(props)}>
           <Image
             style={styles.btn_st}
-            source={require('../image/camera.png')}
+            source={require('../../image/camera.png')}
           />
         </TouchableOpacity>
 
         {/* 갤러리 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => gallery(props)}>
+          onPress={() => executeGallery(props)}>
           <Image
             style={styles.btn_st}
-            source={require('../image/gallery.png')}
+            source={require('../../image/gallery.png')}
           />
         </TouchableOpacity>
       </SafeAreaView>

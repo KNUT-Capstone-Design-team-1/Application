@@ -1,7 +1,6 @@
-import * as React from 'react';
-import {SafeAreaView, StyleSheet, ToastAndroid, Image} from 'react-native';
+import {ToastAndroid} from 'react-native';
 
-async function Send_img(props) {
+async function sendImage(props) {
   ToastAndroid.showWithGravity(
     '검색중..',
     ToastAndroid.SHORT,
@@ -31,7 +30,7 @@ async function Send_img(props) {
       );
 
       p_data = p_datadummy[0].resBody.map(item => item);
-      navigation.navigate('Pill_Information');
+      navigation.navigate('pillInformation');
     } else if (p_datadummy[0].status === 'bad') {
       const {navigation} = props;
 
@@ -40,7 +39,7 @@ async function Send_img(props) {
         ToastAndroid.SHORT,
         ToastAndroid.CENTER,
       );
-      navigation.navigate('Check_Pic');
+      navigation.navigate('pictureCheck');
     }
   } catch (e) {
     const {navigation} = props;
@@ -50,31 +49,9 @@ async function Send_img(props) {
       ToastAndroid.LONG,
       ToastAndroid.CENTER,
     );
-    navigation.navigate('Check_Pic');
+    navigation.navigate('pictureCheck');
     console.log(e);
   }
 }
 
-export default function loading_page(props) {
-  Send_img(props);
-  return (
-    // 로딩 이미지 출력
-    <SafeAreaView style={{flex: 1}}>
-      <Image
-        style={styles.photo_st}
-        source={require('../image/loading_screen.png')}
-      />
-    </SafeAreaView>
-  );
-}
-
-// 전체화면 디자인
-const styles = StyleSheet.create({
-  // 로딩 이미지 레이아웃
-  photo_st: {
-    height: '100%',
-    width: '100%',
-    resizeMode: 'contain',
-    backgroundColor: 'white',
-  },
-});
+export {sendImage};

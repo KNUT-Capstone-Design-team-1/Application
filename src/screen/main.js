@@ -14,40 +14,40 @@ export default function Main(props) {
       {/* 로고 이미지 */}
       <Image
         style={styles.logo_st}
-        source={require('../image/wip_main_logo.png')}
+        source={require('../../image/wip_main_logo.png')}
       />
 
       {/* 알약 검색 버튼 */}
       <TouchableOpacity
         style={styles.opacity_st}
         onPress={() => {
-          navigation.navigate('Search_Pill');
+          navigation.navigate('pillSearch');
           pill_managing_sw = 0;
           img_uri = '';
         }}>
         <Image
           style={styles.btn_st}
-          source={require('../image/pill_search.png')}
+          source={require('../../image/pill_search.png')}
         />
       </TouchableOpacity>
 
       {/* 내 주변 약국 버튼 */}
       <TouchableOpacity
         style={styles.opacity_st}
-        onPress={() => navigation.navigate('Nearby_Pharmacies')}>
+        onPress={() => navigation.navigate('nearbyPharmacy')}>
         <Image
           style={styles.btn_st}
-          source={require('../image/nearby_pharmacy.png')}
+          source={require('../../image/nearby_pharmacy.png')}
         />
       </TouchableOpacity>
 
       {/* 알약 보관함 버튼 */}
       <TouchableOpacity
         style={styles.opacity_st}
-        onPress={() => navigation.navigate('Pill_Storage')}>
+        onPress={() => navigation.navigate('pillStore')}>
         <Image
           style={styles.btn_st}
-          source={require('../image/pill_storage.png')}
+          source={require('../../image/pill_store.png')}
         />
       </TouchableOpacity>
     </SafeAreaView>

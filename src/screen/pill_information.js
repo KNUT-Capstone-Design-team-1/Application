@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-  add_pill,
-  delete_pill,
-  delete_all,
-  get_sepcific_pills,
-} from './Database';
+  addPill,
+  deletePill,
+  deleteAll,
+  getSpecificPills,
+} from '../database/queries/pill_search';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {
   SafeAreaView,
@@ -19,10 +19,10 @@ import {
 // 알약 정보 저장
 function Save_pill(props) {
   // DB로 부터 특정한 알약 정보 추출
-  const In_DB = get_sepcific_pills(p_data[0].name);
+  const In_DB = getSpecificPills(p_data[0].name);
 
   if (In_DB.toString() === '') {
-    add_pill(
+    addPill(
       p_data[0].image,
       p_data[0].name,
       p_data[0].effect,
@@ -51,22 +51,22 @@ function Delete_pill(props) {
   const {navigation} = props;
 
   // 데이터베이스 알약 삭제 함수 호출
-  delete_pill(p_data[0].name);
+  deletePill(p_data[0].name);
   ToastAndroid.showWithGravity(
     '삭제완료',
     ToastAndroid.SHORT,
     ToastAndroid.CENTER,
   );
   // 뒤로가기
-  navigation.replace('Pill_Storage');
+  navigation.replace('pillStore');
 }
 
 // 알약 정보 데이터 베이스 초기화
 function flush_DB(props) {
-  delete_all();
+  deleteAll();
 }
 
-export default function Pill_Information(props) {
+export default function PillInformation(props) {
   // 화면 이동을 위한 네비게이션 선언
   const {navigation} = props;
 
@@ -97,10 +97,10 @@ export default function Pill_Information(props) {
         {/* 내 주변 약국 화면 이동 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => navigation.navigate('Nearby_Pharmacies')}>
+          onPress={() => navigation.navigate('nearbyPharmacy')}>
           <Image
             style={styles.btn_st}
-            source={require('../image/nearby_pharmacy_mini.png')}
+            source={require('../../image/nearby_pharmacy_mini.png')}
           />
         </TouchableOpacity>
 
@@ -112,7 +112,7 @@ export default function Pill_Information(props) {
             onPress={() => Save_pill(props)}>
             <Image
               style={styles.btn_st}
-              source={require('../image/save.png')}
+              source={require('../../image/save.png')}
             />
           </TouchableOpacity>
         ) : (
@@ -122,7 +122,7 @@ export default function Pill_Information(props) {
             onPress={() => Delete_pill(props)}>
             <Image
               style={styles.btn_st}
-              source={require('../image/delete.png')}
+              source={require('../../image/delete.png')}
             />
           </TouchableOpacity>
         )}
@@ -130,10 +130,10 @@ export default function Pill_Information(props) {
         {/* 메인 화면 이동 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => navigation.navigate('Main')}>
+          onPress={() => navigation.navigate('main')}>
           <Image
             style={styles.btn_st}
-            source={require('../image/main_mini.png')}
+            source={require('../../image/main_mini.png')}
           />
         </TouchableOpacity>
       </SafeAreaView>

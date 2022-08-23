@@ -1,6 +1,5 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
-import Geolocation from 'react-native-geolocation-service';
 import {RFValue} from 'react-native-responsive-fontsize';
 
 import {
@@ -12,48 +11,19 @@ import {
   Image,
 } from 'react-native';
 
+import {getPharmacyList} from '../api/nearby_pharmacy';
+
 // 선택한 약국의 정보가 적힌 kakao map 주소
 global.pharm_url = '';
 
-export default function Nearby_Pharmacies(props) {
+export default function NearbyPharmacy(props) {
   const [pharmMap, setPharmMap] = useState();
   const {navigation} = props;
 
   useFocusEffect(
     useCallback(() => {
-      const getPharmList = async () => {
-        // 마지막 위치정보 좌표를 카카오맵 API로 전송
-        Geolocation.getCurrentPosition(async position => {
-          try {
-            // position.longitude   position.latitude
-            let response = await fetch(
-              'https://dapi.kakao.com/v2/local/search/category.json?category_group_code=PM9&radius=500&x=' +
-                position.coords.longitude +
-                '&y=' +
-                position.coords.latitude +
-                '&input_coord=WGS84',
-              {
-                headers: {
-                  Authorization: 'KakaoAK 33a8b02db1a0de6d37b4d7de43955e46',
-                },
-              },
-            );
-            // 카카오맵으로 부터 응답받은 데이터를 json으로 파싱
-            const result_tmp = await response.json();
-
-            // 약국의 이름과 정보 url만 추출하여 리스트에 저장
-            const pharms = result_tmp.documents.map(res => ({
-              name: res.place_name,
-              url: res.place_url,
-            }));
-            setPharmMap(pharms);
-          } catch (e) {
-            console.log(e);
-          }
-        });
-      };
-      getPharmList();
-    }, []),
+      return setPharmMap(pharmMap, getPharmacyList());
+    }, [pharmMap]),
   );
 
   // kakao map api으로 부터 받아온 약국 이름을 표시하기 위한 Flat List 렌더링 <스크롤>
@@ -63,7 +33,7 @@ export default function Nearby_Pharmacies(props) {
       <TouchableOpacity
         style={styles.list_st}
         onPress={() => {
-          (pharm_url = item.url), navigation.navigate('Pharmacy_Info');
+          (pharm_url = item.url), navigation.navigate('pharmacyInfo');
         }}>
         <Text style={styles.pharm_name}>{item.name}</Text>
       </TouchableOpacity>
@@ -77,8 +47,11 @@ export default function Nearby_Pharmacies(props) {
         {/* 메인 화면 이동 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => navigation.navigate('Main')}>
-          <Image style={styles.btn_st} source={require('../image/home.png')} />
+          onPress={() => navigation.navigate('main')}>
+          <Image
+            style={styles.btn_st}
+            source={require('../../image/home.png')}
+          />
         </TouchableOpacity>
 
         <Text style={styles.txt_st}>내 주변 약국</Text>
