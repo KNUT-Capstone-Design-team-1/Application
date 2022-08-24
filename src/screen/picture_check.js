@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {RFValue} from 'react-native-responsive-fontsize';
-import * as pillSearch from './pill_search';
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -8,6 +7,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
+import {executeCamera, executeGallery} from '../services/pill_search';
 
 export default function PictureCheck(props) {
   const {navigation} = props;
@@ -38,7 +38,7 @@ export default function PictureCheck(props) {
         {/* 재촬영 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => pillSearch.camera(props)}>
+          onPress={() => executeCamera(props)}>
           <Image
             style={styles.btn_st}
             source={require('../../image/recamera.png')}
@@ -48,7 +48,7 @@ export default function PictureCheck(props) {
         {/* 갤러리 재선택 버튼 */}
         <TouchableOpacity
           style={styles.opacity_st}
-          onPress={() => pillSearch.gallery(props)}>
+          onPress={() => executeGallery(props)}>
           <Image
             style={styles.btn_st}
             source={require('../../image/gallery.png')}

@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {RFValue} from 'react-native-responsive-fontsize';
+import Geolocation from 'react-native-geolocation-service';
 
 import {
   SafeAreaView,
@@ -11,7 +12,7 @@ import {
   Image,
 } from 'react-native';
 
-import {getPharmacyList} from '../api/nearby_pharmacy';
+import {callNearbyPharmacyApi} from '../api/nearby_pharmacy';
 
 // 선택한 약국의 정보가 적힌 kakao map 주소
 global.pharm_url = '';
@@ -22,8 +23,17 @@ export default function NearbyPharmacy(props) {
 
   useFocusEffect(
     useCallback(() => {
-      return setPharmMap(pharmMap, getPharmacyList());
-    }, [pharmMap]),
+      // 마지막 위치정보 좌표를 카카오맵 API로 전송
+      Geolocation.getCurrentPosition(async position => {
+        const pharmacyList = await callNearbyPharmacyApi(position);
+        const nearbyPharmacies = pharmacyList.documents.map(res => ({
+          name: res.place_name,
+          url: res.place_url,
+        }));
+
+        setPharmMap(nearbyPharmacies);
+      });
+    }, []),
   );
 
   // kakao map api으로 부터 받아온 약국 이름을 표시하기 위한 Flat List 렌더링 <스크롤>
