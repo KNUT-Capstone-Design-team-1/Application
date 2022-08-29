@@ -15,7 +15,7 @@ function executeCamera(props) {
       const {navigation} = props;
 
       if (uri.uri != null) {
-        img_uri = uri.uri;
+        imageUrl = uri.uri;
         img_base64 = uri.base64;
         navigation.replace('pictureCheck');
       }
@@ -56,7 +56,7 @@ function executeGallery(props) {
       const {navigation} = props;
 
       if (uri.uri != null) {
-        img_uri = uri.uri;
+        imageUrl = uri.uri;
         img_base64 = uri.base64;
         navigation.replace('pictureCheck');
       }

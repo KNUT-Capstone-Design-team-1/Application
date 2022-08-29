@@ -105,7 +105,7 @@ export default function PillInformation(props) {
         </TouchableOpacity>
 
         {/* 데이터베이스 내 알약정보 저장 / 삭제 버튼 */}
-        {pill_managing_sw === 0 ? (
+        {isPillManaging === 0 ? (
           // 저장버튼
           <TouchableOpacity
             style={styles.opacity_st}

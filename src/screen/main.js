@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {SafeAreaView, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import * as Components from '../components';
 
-global.img_uri = ''; // 화면에 표시되는 이미지의 주소
+global.imageUrl = ''; // 화면에 표시되는 이미지의 주소
 global.img_base64 = ''; // json에 첨부될 base64
 global.p_data = ''; // 알약에 대한 데이터
-global.pill_managing_sw = 0; // Pill Storage에서 저장 버튼과 삭제 버튼을 전환하는 스위치
+global.isPillManaging = 0; // Pill Storage에서 저장 버튼과 삭제 버튼을 전환하는 스위치
 
 export default function Main(props) {
   const {navigation} = props;
@@ -12,76 +13,29 @@ export default function Main(props) {
   return (
     <SafeAreaView style={styles.container}>
       {/* 로고 이미지 */}
-      <Image
-        style={styles.logo_st}
-        source={require('../../image/wip_main_logo.png')}
-      />
+      <Components.MainComponents.LogoImage navigation={navigation} />
 
       {/* 알약 검색 버튼 */}
-      <TouchableOpacity
-        style={styles.opacity_st}
-        onPress={() => {
-          navigation.navigate('pillSearch');
-          pill_managing_sw = 0;
-          img_uri = '';
-        }}>
-        <Image
-          style={styles.btn_st}
-          source={require('../../image/pill_search.png')}
-        />
-      </TouchableOpacity>
+      <Components.PillSearchComponents.PillSearchButton
+        navigation={navigation}
+      />
 
       {/* 내 주변 약국 버튼 */}
-      <TouchableOpacity
-        style={styles.opacity_st}
-        onPress={() => navigation.navigate('nearbyPharmacy')}>
-        <Image
-          style={styles.btn_st}
-          source={require('../../image/nearby_pharmacy.png')}
-        />
-      </TouchableOpacity>
+      <Components.NearbyPharmacyComponents.NearbyPharmacyButton
+        navigation={navigation}
+      />
 
       {/* 알약 보관함 버튼 */}
-      <TouchableOpacity
-        style={styles.opacity_st}
-        onPress={() => navigation.navigate('pillStore')}>
-        <Image
-          style={styles.btn_st}
-          source={require('../../image/pill_store.png')}
-        />
-      </TouchableOpacity>
+      <Components.PillStoreComponents.PillStoreButton navigation={navigation} />
     </SafeAreaView>
   );
 }
 
-// 스타일 선언
 const styles = StyleSheet.create({
-  // 전체적인 뷰의 레이아웃
   container: {
     flex: 1,
     backgroundColor: '#81C147',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  // 로고 이미지 레이아웃
-  logo_st: {
-    height: '30%',
-    width: '100%',
-    marginTop: '-15%',
-    resizeMode: 'contain',
-  },
-  // 버튼 디자인 레이아웃
-  opacity_st: {
-    height: '20%',
-    width: '92%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '2%',
-  },
-  // 버튼 내 이미지 레이아웃
-  btn_st: {
-    height: '100%',
-    width: '100%',
-    margin: '2%',
   },
 });

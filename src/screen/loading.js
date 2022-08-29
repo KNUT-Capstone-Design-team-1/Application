@@ -1,27 +1,17 @@
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, Image} from 'react-native';
-import {sendImage} from '../api/pill_search';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import * as Components from '../components';
 
-export default function Loading(props) {
-  sendImage(props);
+function Loading() {
   return (
-    // 로딩 이미지 출력
-    <SafeAreaView style={{flex: 1}}>
-      <Image
-        style={styles.photo_st}
-        source={require('../../image/loading_screen.png')}
-      />
+    <SafeAreaView style={styles.loadingImageViewSt}>
+      <Components.PillSearchComponents.LoadingImage />
     </SafeAreaView>
   );
 }
 
-// 전체화면 디자인
 const styles = StyleSheet.create({
-  // 로딩 이미지 레이아웃
-  photo_st: {
-    height: '100%',
-    width: '100%',
-    resizeMode: 'contain',
-    backgroundColor: 'white',
-  },
+  loadingImageViewSt: {flex: 1},
 });
+
+export default Loading;

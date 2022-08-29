@@ -4,7 +4,7 @@ import {getSpecificPills} from '../database/queries/pill_search';
 async function getPillInfo(props) {
   const {navigation} = props;
 
-  pill_managing_sw = 1;
+  isPillManaging = 1;
 
   // DBMS로 부터 선택한 알약에 대한 정보 로드
   const ref_info_tmp = await getSpecificPills(ref_name);

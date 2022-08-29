@@ -20,13 +20,13 @@ export default function PictureCheck(props) {
       </SafeAreaView>
 
       {/* 촬영하거나 선택한 사진 */}
-      <Image style={styles.photo_st} source={{uri: img_uri}} />
+      <Image style={styles.photo_st} source={{uri: imageUrl}} />
 
       {/* 검색버튼 */}
       <TouchableOpacity
         style={styles.btn_layer_1}
         onPress={() => {
-          navigation.navigate('loading'), (pill_managing_sw = 0);
+          navigation.navigate('loading'), (isPillManaging = 0);
         }}>
         <Image
           style={styles.btn_st}

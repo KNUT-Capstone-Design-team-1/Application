@@ -50,7 +50,6 @@ async function sendImage(props) {
       ToastAndroid.CENTER,
     );
     navigation.navigate('pictureCheck');
-    console.log(e);
   }
 }
 
