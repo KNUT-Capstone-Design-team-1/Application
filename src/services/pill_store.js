@@ -1,19 +1,59 @@
-import {getSpecificPills} from '../database/queries/pill_search';
+import {ToastAndroid} from 'react-native';
+import {
+  getSpecificPills,
+  addPill,
+  deletePill,
+} from '../database/queries/pill_search';
 
-// 선택한 알약의 정보 출력
 async function getPillInfo(props) {
   const {navigation} = props;
 
   isPillManaging = 1;
 
-  // DBMS로 부터 선택한 알약에 대한 정보 로드
   const ref_info_tmp = await getSpecificPills(ref_name);
-
-  // 전역 변수인 알약 정보에 DB로 부터 받은 특정한 알약의 데이터를 Mapping
   p_data = ref_info_tmp.map(item => item);
-
-  // 알약 정보화면으로 이동
   navigation.navigate('pillInformation');
 }
 
-export {getPillInfo};
+function deletePillInfo(props) {
+  const {navigation} = props;
+
+  deletePill(p_data[0].name);
+  ToastAndroid.showWithGravity(
+    '삭제완료',
+    ToastAndroid.SHORT,
+    ToastAndroid.CENTER,
+  );
+
+  navigation.replace('pillStore');
+}
+
+function savePillInfo(props) {
+  const In_DB = getSpecificPills(p_data[0].name);
+
+  if (In_DB.toString() === '') {
+    addPill(
+      p_data[0].image,
+      p_data[0].name,
+      p_data[0].effect,
+      p_data[0].dosage,
+      p_data[0].caution,
+      p_data[0].take,
+      p_data[0].maker,
+    );
+
+    ToastAndroid.showWithGravity(
+      '저장완료',
+      ToastAndroid.LONG,
+      ToastAndroid.CENTER,
+    );
+  } else {
+    ToastAndroid.showWithGravity(
+      '중복저장',
+      ToastAndroid.LONG,
+      ToastAndroid.CENTER,
+    );
+  }
+}
+
+export {getPillInfo, deletePillInfo, savePillInfo};

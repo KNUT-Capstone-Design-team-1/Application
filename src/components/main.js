@@ -2,33 +2,23 @@ import * as React from 'react';
 import {StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 const LogoImage = props => {
+  const {style} = props;
   return (
-    <Image
-      style={styles.logo}
-      source={require('../../image/wip_main_logo.png')}
-    />
+    <Image style={style} source={require('../../image/wip_main_logo.png')} />
   );
 };
 
 const MainButton = props => {
-  const {navigation} = props;
+  const {navigation, style} = props;
 
   return (
-    <TouchableOpacity
-      style={styles.opacity}
-      onPress={() => navigation.navigate('main')}>
+    <TouchableOpacity style={style} onPress={() => navigation.navigate('main')}>
       <Image style={styles.btn} source={require('../../image/home.png')} />
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  logo: {
-    height: '30%',
-    width: '100%',
-    marginTop: '-15%',
-    resizeMode: 'contain',
-  },
   opacity: {
     height: '100%',
     width: '15%',
