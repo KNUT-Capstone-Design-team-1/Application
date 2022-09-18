@@ -4,7 +4,8 @@ import * as Components from '../components';
 import * as Styles from '../styles';
 
 function PictureCheck(props) {
-  const {navigation} = props;
+  const {navigation, route} = props;
+  const {params} = route;
 
   return (
     <SafeAreaView style={Styles.PictureCheckStyles.styles.container}>
@@ -16,12 +17,14 @@ function PictureCheck(props) {
       {/* 알약 이미지 */}
       <Components.PictureCheckComponents.PillImage
         style={Styles.PictureCheckStyles.styles.pillImage}
+        imageUrl={params.imageUrl}
       />
 
       {/* 검색 버튼 */}
       <Components.PictureCheckComponents.SearchButton
         navigation={navigation}
         style={Styles.PictureCheckStyles.styles.searchButton}
+        base64Url={params.base64Url}
       />
 
       <SafeAreaView style={Styles.PictureCheckStyles.styles.buttonLayer1}>

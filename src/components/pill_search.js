@@ -16,7 +16,7 @@ const PillSearchButton = props => {
     <TouchableOpacity
       style={style}
       onPress={() => {
-        navigation.navigate('pillSearch', {isPillManaging: 0, imageUrl: ''});
+        navigation.navigate('pillSearch');
       }}>
       <Image
         style={styles.button}

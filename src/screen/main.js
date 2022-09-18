@@ -3,11 +3,6 @@ import {SafeAreaView} from 'react-native';
 import * as Components from '../components';
 import * as Styles from '../styles';
 
-global.imageUrl = ''; // 화면에 표시되는 이미지의 주소
-global.img_base64 = ''; // json에 첨부될 base64
-global.p_data = ''; // 알약에 대한 데이터
-global.isPillManaging = 0; // Pill Storage에서 저장 버튼과 삭제 버튼을 전환하는 스위치
-
 function Main(props) {
   const {navigation} = props;
 

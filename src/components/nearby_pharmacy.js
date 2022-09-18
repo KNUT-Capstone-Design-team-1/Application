@@ -10,8 +10,7 @@ import {
   Text,
   FlatList,
 } from 'react-native';
-import {callNearbyPharmacyApi} from '../api/nearby_pharmacy';
-import * as Components from '../components';
+import * as Api from '../api';
 
 const NearbyPharmacyButton = props => {
   const {navigation, style} = props;
@@ -46,7 +45,10 @@ const PharmacyInfoButtonList = props => {
     React.useCallback(() => {
       // 마지막 위치정보 좌표를 카카오맵 API로 전송
       Geolocation.getCurrentPosition(async position => {
-        const pharmacyList = await callNearbyPharmacyApi(position);
+        const pharmacyList = await Api.NearByPharmacyApi.callNearbyPharmacyApi(
+          position,
+        );
+
         const nearbyPharmacies = pharmacyList.documents.map(res => ({
           name: res.place_name,
           url: res.place_url,

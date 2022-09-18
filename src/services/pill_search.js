@@ -11,13 +11,14 @@ function executeCamera(props) {
   };
 
   try {
-    launchCamera(options, uri => {
+    launchCamera(options, image => {
       const {navigation} = props;
 
-      if (uri.uri != null) {
-        imageUrl = uri.uri;
-        img_base64 = uri.base64;
-        navigation.replace('pictureCheck');
+      if (image.uri != null) {
+        navigation.navigate('pictureCheck', {
+          imageUrl: image.uri,
+          base64Url: image.base64,
+        });
       }
     });
   } catch (e) {
@@ -52,13 +53,14 @@ function executeGallery(props) {
   };
 
   try {
-    launchImageLibrary(options, uri => {
+    launchImageLibrary(options, image => {
       const {navigation} = props;
 
-      if (uri.uri != null) {
-        imageUrl = uri.uri;
-        img_base64 = uri.base64;
-        navigation.replace('pictureCheck');
+      if (image.uri != null) {
+        navigation.navigate('pictureCheck', {
+          imageUrl: image.uri,
+          base64Url: image.base64,
+        });
       }
     });
   } catch (e) {

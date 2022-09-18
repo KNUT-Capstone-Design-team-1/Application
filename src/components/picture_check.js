@@ -20,19 +20,19 @@ const Header = props => {
 };
 
 const PillImage = props => {
-  const {style} = props;
+  const {style, imageUrl} = props;
 
   return <Image style={style} source={{uri: imageUrl}} />;
 };
 
 const SearchButton = props => {
-  const {navigation, style} = props;
+  const {navigation, style, base64Url} = props;
 
   return (
     <TouchableOpacity
       style={style}
       onPress={() => {
-        navigation.navigate('loading'), (isPillManaging = 0);
+        navigation.navigate('loading', {isPillManaging: 0, base64Url});
       }}>
       <Image style={styles.image} source={require('../../image/search.png')} />
     </TouchableOpacity>
