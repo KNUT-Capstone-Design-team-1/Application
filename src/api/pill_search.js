@@ -8,12 +8,10 @@ async function sendImage(navigation, base64Url) {
   );
 
   try {
-    // 메인 서버로 REST를 통해 POST로 전송 및 전송 성공 여부 확인
-    let response = await fetch('http://118.37.24.125:17261/image', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({base64Url}),
-    });
+    let response = await fetch(
+      `http://118.37.24.125:17261/pill-search/image?imageId=${base64Url}`,
+      {method: 'GET'},
+    );
 
     // 메인 서버로 부터 받아온 Json 데이터
     const result = await response.json();
