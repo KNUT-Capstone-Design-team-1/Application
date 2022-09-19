@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Text,
   FlatList,
+  ToastAndroid,
 } from 'react-native';
 import * as Api from '../api';
 
@@ -54,6 +55,14 @@ const PharmacyInfoButtonList = props => {
           url: res.place_url,
         }));
 
+        if (nearbyPharmacies?.length === 0) {
+          ToastAndroid.showWithGravity(
+            '주변에 약국이 없습니다.',
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER,
+          );
+        }
+
         setPharmMap(nearbyPharmacies);
       });
     }, []),
@@ -65,7 +74,7 @@ const PharmacyInfoButtonList = props => {
       <TouchableOpacity
         style={styles.list}
         onPress={() => {
-          (pharm_url = item.url), navigation.navigate('pharmacyInfo');
+          navigation.navigate('pharmacyInfo', {pharmacyUrl: item.url});
         }}>
         <Text style={styles.pharmName}>{item.name}</Text>
       </TouchableOpacity>

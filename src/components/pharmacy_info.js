@@ -16,8 +16,8 @@ const Header = props => {
 };
 
 const PharmacyInfo = props => {
-  const {style} = props;
-  return <WebView style={style} source={{uri: pharm_url}} useWebkit={true} />;
+  const {style, pharmacyUrl} = props;
+  return <WebView style={style} source={{uri: pharmacyUrl}} useWebkit={true} />;
 };
 
 export {Header, PharmacyInfo};

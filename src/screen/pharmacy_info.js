@@ -4,7 +4,8 @@ import * as Components from '../components';
 import * as Styles from '../styles';
 
 function PharmacyInfo(props) {
-  const {navigation} = props;
+  const {navigation, route} = props;
+  const {params} = route;
 
   return (
     <SafeAreaView style={Styles.PharmacyInformationStyles.styles.container}>
@@ -16,6 +17,7 @@ function PharmacyInfo(props) {
 
       {/* 약국 정보 */}
       <Components.PharmacyInformationComponents.PharmacyInfo
+        pharmacyUrl={params.pharmacyUrl}
         style={Styles.PharmacyInformationStyles.styles.webView}
       />
     </SafeAreaView>
