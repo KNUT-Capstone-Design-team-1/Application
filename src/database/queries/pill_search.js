@@ -6,29 +6,21 @@ let getAllPills = () => {
 };
 
 // 특정한 알약 정보 출력
-let getSpecificPills = _name => {
-  return realm.objects('Pill').filtered(`name = "${_name}"`);
+let getSpecificPills = ITEM_NAME => {
+  return realm.objects('Pill').filtered(`ITEM_NAME = "${ITEM_NAME}"`);
 };
 
 // 알약 추가 쿼리
-let addPill = (_image, _name, _effect, _dosage, _caution, _take, _maker) => {
+let addPill = pillInformation => {
   realm.write(() => {
-    realm.create('Pill', {
-      image: _image,
-      name: _name,
-      effect: _effect,
-      dosage: _dosage,
-      caution: _caution,
-      take: _take,
-      maker: _maker,
-    });
+    realm.create('Pill', pillInformation);
   });
 };
 
 // 특정 알약 삭제
-let deletePill = _name => {
+let deletePill = ITEM_NAME => {
   realm.write(() => {
-    realm.delete(getSpecificPills(_name));
+    realm.delete(getSpecificPills(ITEM_NAME));
   });
 };
 

@@ -4,7 +4,9 @@ import * as Components from '../components';
 import * as Styles from '../styles';
 
 function PillInformation(props) {
-  const {navigation} = props;
+  const {navigation, route} = props;
+  const {params} = route;
+  const {isPillManaging} = params;
 
   return (
     <SafeAreaView style={Styles.PillInformationStyles.styles.container}>

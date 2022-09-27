@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Main from '../screen/main';
 import PictureCheck from '../screen/picture_check';
 import PillSearch from '../screen/pill_search';
+import PillInfoList from '../screen/pill_info_list';
 import PillInformation from '../screen/pill_information';
 import Loading from '../screen/loading';
 import NearbyPharmacy from '../screen/nearby_pharmacy';
@@ -31,6 +32,12 @@ const NaviContainer = () => {
         <Stack.Screen
           name="pillSearch"
           component={PillSearch}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="pillInfoList"
+          component={PillInfoList}
           options={{headerShown: false}}
         />
 
