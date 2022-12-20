@@ -19,15 +19,15 @@ const Header = props => {
 };
 
 const PillInfoButtonList = props => {
-  const {navigation, PillList} = props;
+  const {navigation, PillInfos} = props;
 
-  // kakao map api으로 부터 받아온 약국 이름을 표시하기 위한 Flat List 렌더링 <스크롤>
+  // 알약 개요정보 버튼 목록 <스크롤>
   const renderList = ({item}) => (
     <SafeAreaView style={styles.flat}>
       <TouchableOpacity
         style={styles.list}
         onPress={() => {
-          navigation.navigate('pharmacyInfo', {pharmacyUrl: item.url});
+          navigation.navigate('pillInformation', {PillDetail: item.data});
         }}>
         <Text style={styles.pharmName}>{item.name}</Text>
       </TouchableOpacity>
@@ -36,7 +36,7 @@ const PillInfoButtonList = props => {
 
   return (
     <FlatList
-      data={PillList}
+      data={PillInfos}
       renderItem={renderList}
       keyExtractor={(item, index) => index.toString()}
     />

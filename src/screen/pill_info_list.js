@@ -6,7 +6,7 @@ import * as Styles from '../styles';
 function PillInfoList(props) {
   const {navigation, route} = props;
   const {params} = route;
-  const {PillList} = params;
+  const {PillInfos} = params;
 
   return (
     <SafeAreaView style={Styles.PillInfoListStyles.styles.container}>
@@ -18,7 +18,7 @@ function PillInfoList(props) {
       {/* 알약 정보 버튼 리스트 */}
       <Components.PillInfoListComponents.PillInfoButtonList
         navigation={navigation}
-        PillList={PillList}
+        PillInfoList={PillInfos}
       />
     </SafeAreaView>
   );
