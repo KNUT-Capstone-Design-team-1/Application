@@ -1,12 +1,25 @@
-import React from 'react';
-import {SafeAreaView} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, BackHandler} from 'react-native';
 import * as Components from '../components';
 import * as Styles from '../styles';
 
 function PillInfoList(props) {
   const {navigation, route} = props;
   const {params} = route;
-  const {PillInfos} = params;
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate('pictureCheck');
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  });
 
   return (
     <SafeAreaView style={Styles.PillInfoListStyles.styles.container}>
@@ -18,7 +31,7 @@ function PillInfoList(props) {
       {/* 알약 정보 버튼 리스트 */}
       <Components.PillInfoListComponents.PillInfoButtonList
         navigation={navigation}
-        PillInfoList={PillInfos}
+        PillInfoList={params}
       />
     </SafeAreaView>
   );

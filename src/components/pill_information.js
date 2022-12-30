@@ -21,20 +21,22 @@ const Header = props => {
 };
 
 const PillImage = props => {
-  const {style} = props;
-  return <Image style={style} source={{uri: p_data[0].image}} />;
+  const {style, image} = props;
+  return <Image style={style} source={{uri: image}} />;
 };
 
 const PillInfo = props => {
   return (
     <ScrollView>
       <Text style={styles.item}>
-        {'\n '}이름 : {p_data[0].name}
-        {'\n\n\n\n'} 효능 및 효과 {'\n'} : {p_data[0].effect}
-        {'\n\n\n\n'} 용법 및 용량 {'\n'} : {p_data[0].dosage}
-        {'\n\n\n\n'} 주의사항 {'\n'} : {p_data[0].caution}
-        {'\n\n\n\n'} 복약정보 {'\n'} : {p_data[0].take}
-        {'\n\n\n\n'} 제조사 {'\n'} : {p_data[0].maker}
+        {'\n '}이름 : {props.itemName}
+        {'\n\n\n\n'} 제조사 {'\n'} : {props.entpName}
+        {'\n\n\n\n'} 모양 {'\n'} : {props.drugShape}
+        {'\n\n\n\n'} 주성분 {'\n'} : {props.mainItemIngr}
+        {'\n\n\n\n'} 첨가제 {'\n'} : {props.ingrName}
+        {'\n\n\n\n'} 원료성분 {'\n'} : {props.matrialName}
+        {'\n\n\n\n'} 포장단위 {'\n'} : {props.packUnit}
+        {'\n\n\n\n'} 총량 {'\n'} : {props.totalContent}
       </Text>
     </ScrollView>
   );

@@ -1,11 +1,24 @@
-import * as React from 'react';
-import {SafeAreaView, Image} from 'react-native';
+import React, {useEffect} from 'react';
+import {SafeAreaView, Image, BackHandler} from 'react-native';
 import * as Styles from '../styles';
 import * as Api from '../api';
 
 function Loading(props) {
   const {navigation, route} = props;
   const {params} = route;
+
+  useEffect(() => {
+    const backAction = () => {
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  });
 
   Api.PillSearchApi.sendImage(navigation, params.base64Url);
 

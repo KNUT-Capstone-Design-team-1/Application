@@ -19,7 +19,7 @@ const Header = props => {
 };
 
 const PillInfoButtonList = props => {
-  const {navigation, PillInfos} = props;
+  const {navigation, PillInfoList} = props;
 
   // 알약 개요정보 버튼 목록 <스크롤>
   const renderList = ({item}) => (
@@ -27,16 +27,19 @@ const PillInfoButtonList = props => {
       <TouchableOpacity
         style={styles.list}
         onPress={() => {
-          navigation.navigate('pillInformation', {PillDetail: item.data});
+          navigation.navigate('pillInformation', {
+            PillDetail: item,
+            isManaging: false,
+          });
         }}>
-        <Text style={styles.pharmName}>{item.name}</Text>
+        <Text style={styles.pillName}>{item.ITEM_NAME}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 
   return (
     <FlatList
-      data={PillInfos}
+      data={PillInfoList}
       renderItem={renderList}
       keyExtractor={(item, index) => index.toString()}
     />
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: RFValue(8, 720),
   },
-  pharmName: {
+  pillName: {
     color: 'black',
     fontSize: RFValue(30, 720),
     fontFamily: 'Jua-Regular',

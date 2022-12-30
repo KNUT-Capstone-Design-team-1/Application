@@ -49,7 +49,7 @@ async function sendImage(navigation, base64Url) {
     );
 
     // 차후 pillList 화면 작업
-    navigation.navigate('pillInfoList', {PillInfoList: result.data});
+    navigation.navigate('pillInfoList', result.data);
     return;
   } catch (e) {
     ToastAndroid.showWithGravity(
