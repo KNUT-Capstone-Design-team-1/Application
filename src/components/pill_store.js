@@ -9,7 +9,6 @@ import {
   Image,
 } from 'react-native';
 import {getAllPills} from '../database/queries/pill_search';
-import {getPillInfo} from '../services/pill_store';
 
 const PillStoreButton = props => {
   const {navigation, style} = props;
@@ -37,22 +36,31 @@ const Header = props => {
 };
 
 const PillList = props => {
-  const stored_pill_list = getAllPills();
-  const stored_pill_name = stored_pill_list.map(tmp => ({name: tmp.name}));
+  const {navigation} = props;
+  const pillList = getAllPills();
 
   const renderList = ({item}) => (
     <SafeAreaView style={styles.listContainer}>
       <TouchableOpacity
         style={styles.listOpacity}
-        onPress={() => {
-          (ref_name = item.name), getPillInfo(props);
-        }}>
-        <Text style={styles.listText}>{item.name}</Text>
+        onPress={() =>
+          navigation.navigate('pillInformation', {
+            pillDetail: item,
+            isManaging: true,
+          })
+        }>
+        <Text style={styles.listText}>{item.ITEM_NAME}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 
-  return <FlatList data={stored_pill_name} renderItem={renderList} />;
+  return (
+    <FlatList
+      data={pillList}
+      renderItem={renderList}
+      keyExtractor={(_item, index) => index.toString()}
+    />
+  );
 };
 
 const NearByPharmacyButton = props => {

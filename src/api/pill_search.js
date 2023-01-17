@@ -12,10 +12,7 @@ async function sendImage(navigation, base64Url) {
 
     let response = await fetch(url, {
       method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
       body: JSON.stringify({base64Url}),
     });
 
@@ -48,7 +45,6 @@ async function sendImage(navigation, base64Url) {
       ToastAndroid.CENTER,
     );
 
-    // 차후 pillList 화면 작업
     navigation.navigate('pillInfoList', result.data);
     return;
   } catch (e) {

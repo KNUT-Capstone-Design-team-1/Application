@@ -6,8 +6,8 @@ let getAllPills = () => {
 };
 
 // 특정한 알약 정보 출력
-let getSpecificPills = ITEM_NAME => {
-  return realm.objects('Pill').filtered(`ITEM_NAME = "${ITEM_NAME}"`);
+let getSpecificPills = ITEM_SEQ => {
+  return realm.objects('Pill').filtered(`ITEM_SEQ = "${ITEM_SEQ}"`);
 };
 
 // 알약 추가 쿼리
@@ -18,9 +18,9 @@ let addPill = pillInformation => {
 };
 
 // 특정 알약 삭제
-let deletePill = ITEM_NAME => {
+let deletePill = ITEM_SEQ => {
   realm.write(() => {
-    realm.delete(getSpecificPills(ITEM_NAME));
+    realm.delete(getSpecificPills(ITEM_SEQ));
   });
 };
 

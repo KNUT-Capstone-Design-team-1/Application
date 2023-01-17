@@ -26,17 +26,33 @@ const PillImage = props => {
 };
 
 const PillInfo = props => {
+  const {pillDetail} = props;
+  const {
+    ITEM_NAME,
+    ENTP_NAME,
+    DRUG_SHAPE,
+    CHARTN,
+    MAIN_ITEM_INGR,
+    INGR_NAME,
+    MATERIAL_NAME,
+    PACK_UNIT,
+    VALID_TERM,
+    STORAGE_METHOD,
+  } = pillDetail;
+
   return (
     <ScrollView>
       <Text style={styles.item}>
-        {'\n '}이름 : {props.itemName}
-        {'\n\n\n\n'} 제조사 {'\n'} : {props.entpName}
-        {'\n\n\n\n'} 모양 {'\n'} : {props.drugShape}
-        {'\n\n\n\n'} 주성분 {'\n'} : {props.mainItemIngr}
-        {'\n\n\n\n'} 첨가제 {'\n'} : {props.ingrName}
-        {'\n\n\n\n'} 원료성분 {'\n'} : {props.matrialName}
-        {'\n\n\n\n'} 포장단위 {'\n'} : {props.packUnit}
-        {'\n\n\n\n'} 총량 {'\n'} : {props.totalContent}
+        {'\n '}품목명 : {ITEM_NAME}
+        {'\n\n\n\n'} 제조사 {'\n'} : {ENTP_NAME}
+        {'\n\n\n\n'} 모양 {'\n'} : {DRUG_SHAPE}
+        {'\n\n\n\n'} 성상 {'\n'} : {CHARTN}
+        {'\n\n\n\n'} 주성분 {'\n'} : {MAIN_ITEM_INGR}
+        {'\n\n\n\n'} 첨가제 {'\n'} : {INGR_NAME}
+        {'\n\n\n\n'} 원료성분 {'\n'} : {MATERIAL_NAME}
+        {'\n\n\n\n'} 포장단위 {'\n'} : {PACK_UNIT}
+        {'\n\n\n\n'} 유효기간 {'\n'} : {VALID_TERM}
+        {'\n\n\n\n'} 저장방법 {'\n'} : {STORAGE_METHOD}
       </Text>
     </ScrollView>
   );

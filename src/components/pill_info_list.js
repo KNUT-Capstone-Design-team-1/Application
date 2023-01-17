@@ -28,7 +28,7 @@ const PillInfoButtonList = props => {
         style={styles.list}
         onPress={() => {
           navigation.navigate('pillInformation', {
-            PillDetail: item,
+            pillDetail: item,
             isManaging: false,
           });
         }}>
