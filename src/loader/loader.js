@@ -1,4 +1,5 @@
 import {ToastAndroid, PermissionsAndroid} from 'react-native';
+import RNExitApp from 'react-native-exit-app';
 
 // 카메라, 내ㆍ외장 스토리지, GPS 권한 요청
 async function requestPermission() {
@@ -29,10 +30,13 @@ async function requestPermission() {
       );
     } else {
       ToastAndroid.showWithGravity(
-        '권한 거절',
+        '권한이 거절되어 앱을 종료합니다.',
         ToastAndroid.LONG,
         ToastAndroid.CENTER,
       );
+      setTimeout(() => {
+        RNExitApp.exitApp();
+      }, 500);
     }
   });
 }
