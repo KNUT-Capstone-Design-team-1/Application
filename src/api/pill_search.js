@@ -8,7 +8,7 @@ async function sendImage(navigation, base64Url) {
   );
 
   try {
-    const url = 'http://118.37.24.125:17261/pill-search/image?skip=0&limit=10';
+    const url = 'http://118.37.24.125:17261/pill-search/image?skip=0&limit=20';
 
     let response = await fetch(url, {
       method: 'POST',
