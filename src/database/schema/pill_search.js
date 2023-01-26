@@ -1,8 +1,8 @@
 import Realm from 'realm';
 
-class Pill_Schema extends Realm.Object {}
-Pill_Schema.schema = {
-  name: 'Pill',
+class PillInfo extends Realm.Object {}
+PillInfo.schema = {
+  name: 'pillInfo',
   properties: {
     ITEM_SEQ: {type: 'string', optional: true},
     ITEM_NAME: {type: 'string', optional: true},
@@ -19,6 +19,6 @@ Pill_Schema.schema = {
   },
 };
 
-let realm = new Realm({schema: [Pill_Schema], schemaVersion: 8});
+let realm = new Realm({schema: [PillInfo], schemaVersion: 9});
 
 export default realm;

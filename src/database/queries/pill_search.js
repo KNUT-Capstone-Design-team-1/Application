@@ -2,18 +2,18 @@ import realm from '../schema/pill_search';
 
 // 모든 알약 정보 출력
 let getAllPills = () => {
-  return realm.objects('Pill');
+  return realm.objects('pillInfo');
 };
 
 // 특정한 알약 정보 출력
 let getSpecificPills = ITEM_SEQ => {
-  return realm.objects('Pill').filtered(`ITEM_SEQ = "${ITEM_SEQ}"`);
+  return realm.objects('pillInfo').filtered(`ITEM_SEQ = "${ITEM_SEQ}"`);
 };
 
 // 알약 추가 쿼리
 let addPill = pillInformation => {
   realm.write(() => {
-    realm.create('Pill', pillInformation);
+    realm.create('pillInfo', pillInformation);
   });
 };
 
