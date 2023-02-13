@@ -1,33 +1,34 @@
-import realm from '../schema/pill_search';
+import schema from '../schema';
 
 // 모든 알약 정보 출력
-let getAllPills = () => {
-  return realm.objects('pillInfo');
+const getAllPills = () => {
+  const result = schema.objects('pillInfo');
+  return result;
 };
 
 // 특정한 알약 정보 출력
-let getSpecificPills = ITEM_SEQ => {
-  return realm.objects('pillInfo').filtered(`ITEM_SEQ = "${ITEM_SEQ}"`);
+const getSpecificPills = ITEM_SEQ => {
+  return schema.objects('pillInfo').filtered(`ITEM_SEQ = "${ITEM_SEQ}"`);
 };
 
 // 알약 추가 쿼리
-let addPill = pillInformation => {
-  realm.write(() => {
-    realm.create('pillInfo', pillInformation);
+const addPill = pillInformation => {
+  schema.write(() => {
+    schema.create('pillInfo', pillInformation);
   });
 };
 
 // 특정 알약 삭제
-let deletePill = ITEM_SEQ => {
-  realm.write(() => {
-    realm.delete(getSpecificPills(ITEM_SEQ));
+const deletePill = ITEM_SEQ => {
+  schema.write(() => {
+    schema.delete(getSpecificPills(ITEM_SEQ));
   });
 };
 
 // 모든 알약 정보 삭제
-let deleteAll = () => {
-  realm.write(() => {
-    realm.delete(getAllPills());
+const deleteAll = () => {
+  schema.write(() => {
+    schema.delete(getAllPills());
   });
 };
 

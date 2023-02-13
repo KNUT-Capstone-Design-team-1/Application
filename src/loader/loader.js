@@ -1,9 +1,10 @@
 import {ToastAndroid, PermissionsAndroid} from 'react-native';
 import RNExitApp from 'react-native-exit-app';
+import {addConfig, getAllConfig} from '../database/queries/config';
 
 // 카메라, 내ㆍ외장 스토리지, GPS 권한 요청
 async function requestPermission() {
-  PermissionsAndroid.requestMultiple([
+  const result = await PermissionsAndroid.requestMultiple([
     // 안드로이드 카메라 촬영 권한
     PermissionsAndroid.PERMISSIONS.CAMERA,
     // 안드로이드 외장 스토리지 쓰기 권한
@@ -14,31 +15,42 @@ async function requestPermission() {
     PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
     // 안드로이드 FINE location 권한 (네트워크와 GPS를 모두 사용하는 위치 추적)
     PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-  ]).then(result => {
-    // 권한 획득 결과 값에 대한 예외처리
-    if (
-      result['android.permission.CAMERA'] &&
-      result['android.permission.WRITE_EXTERNAL_STORAGE'] &&
-      result['android.permission.READ_EXTERNAL_STORAGE'] &&
-      result['android.permission.ACCESS_COARSE_LOCATION'] &&
-      result['android.permission.ACCESS_FINE_LOCATION'] === 'granted'
-    ) {
-      ToastAndroid.showWithGravity(
-        '모든 권한 획득',
-        ToastAndroid.LONG,
-        ToastAndroid.CENTER,
-      );
-    } else {
-      ToastAndroid.showWithGravity(
-        '권한이 거절되어 앱을 종료합니다.',
-        ToastAndroid.LONG,
-        ToastAndroid.CENTER,
-      );
-      setTimeout(() => {
-        RNExitApp.exitApp();
-      }, 500);
+  ]);
+
+  // 권한 획득 결과 값에 대한 예외처리
+  if (Object.values(result).some(v => v !== 'granted')) {
+    ToastAndroid.showWithGravity(
+      '거절된 권한이 있어 앱을 종료합니다.',
+      ToastAndroid.LONG,
+      ToastAndroid.CENTER,
+    );
+
+    setTimeout(() => {
+      RNExitApp.exitApp();
+    }, 500);
+    return;
+  }
+
+  ToastAndroid.showWithGravity(
+    '모든 권한 획득',
+    ToastAndroid.LONG,
+    ToastAndroid.CENTER,
+  );
+  return;
+}
+
+/**
+ * 설정값 초기화
+ */
+async function initConfig() {
+  const configKeys = (await getAllConfig()).map(v => v.key);
+  const essentialConfigs = ['misuseAgree', 'searchAgree'];
+
+  essentialConfigs.forEach(v => {
+    if (!configKeys.includes(v)) {
+      addConfig({key: v, value: 'decline'});
     }
   });
 }
 
-export default requestPermission;
+export {requestPermission, initConfig};
