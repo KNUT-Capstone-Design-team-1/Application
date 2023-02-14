@@ -1,4 +1,5 @@
 import {ToastAndroid} from 'react-native';
+import axios from 'axios';
 
 async function sendImage(navigation, base64Url) {
   ToastAndroid.showWithGravity(
@@ -11,14 +12,12 @@ async function sendImage(navigation, base64Url) {
     const url =
       'http://222.108.233.118:17261/pill-search/image?skip=0&limit=20';
 
-    let response = await fetch(url, {
+    const result = await axios(url, {
       method: 'POST',
       headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
       body: JSON.stringify({base64Url}),
+      timeout: 20000,
     });
-
-    // 메인 서버로 부터 받아온 Json 데이터
-    const result = await response.json();
 
     if (!result.isSuccess) {
       ToastAndroid.showWithGravity(
@@ -50,11 +49,10 @@ async function sendImage(navigation, base64Url) {
     return;
   } catch (e) {
     ToastAndroid.showWithGravity(
-      `에러코드 : ${e}`,
-      ToastAndroid.LONG,
+      '서버 요청 중 오류가 발생했습니다.',
+      ToastAndroid.SHORT,
       ToastAndroid.CENTER,
     );
-    console.log(e);
     navigation.navigate('pictureCheck');
     return;
   }

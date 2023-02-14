@@ -46,24 +46,31 @@ const PharmacyInfoButtonList = props => {
     React.useCallback(() => {
       // 마지막 위치정보 좌표를 카카오맵 API로 전송
       Geolocation.getCurrentPosition(async position => {
-        const pharmacyList = await Api.NearByPharmacyApi.callNearbyPharmacyApi(
-          position,
-        );
+        try {
+          const pharmacyList =
+            await Api.NearByPharmacyApi.callNearbyPharmacyApi(position);
 
-        const nearbyPharmacies = pharmacyList.documents.map(res => ({
-          name: res.place_name,
-          url: res.place_url,
-        }));
+          const nearbyPharmacies = pharmacyList.documents.map(res => ({
+            name: res.place_name,
+            url: res.place_url,
+          }));
 
-        if (nearbyPharmacies?.length === 0) {
+          if (nearbyPharmacies?.length === 0) {
+            ToastAndroid.showWithGravity(
+              '주변에 약국이 없습니다.',
+              ToastAndroid.SHORT,
+              ToastAndroid.CENTER,
+            );
+          }
+
+          setPharmMap(nearbyPharmacies);
+        } catch (e) {
           ToastAndroid.showWithGravity(
-            '주변에 약국이 없습니다.',
+            '서버와 통신중 오류가 발생했습니다.',
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           );
         }
-
-        setPharmMap(nearbyPharmacies);
       });
     }, []),
   );
