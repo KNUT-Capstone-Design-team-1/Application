@@ -1,9 +1,6 @@
 import {ToastAndroid} from 'react-native';
-import {
-  getSpecificPills,
-  addPill,
-  deletePill,
-} from '../database/queries/pill_search';
+import {PillInfoQuery} from '../database/queries';
+const {getSpecificPills, addPill, deletePill} = PillInfoQuery;
 
 function deletePillInfo(props) {
   const {navigation, ITEM_SEQ} = props;

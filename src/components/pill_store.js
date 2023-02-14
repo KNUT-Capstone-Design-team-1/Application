@@ -8,7 +8,7 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import {getAllPills} from '../database/queries/pill_search';
+import {PillInfoQuery} from '../database/queries';
 
 const PillStoreButton = props => {
   const {navigation, style} = props;
@@ -37,7 +37,7 @@ const Header = props => {
 
 const PillList = props => {
   const {navigation} = props;
-  const pillList = getAllPills();
+  const pillList = PillInfoQuery.getAllPills();
 
   const renderList = ({item}) => (
     <SafeAreaView style={styles.listContainer}>
