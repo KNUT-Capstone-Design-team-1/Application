@@ -19,8 +19,10 @@ const getConfig = key => {
 
 // 설정값 업데이트
 const updateConfig = ({key, value}) => {
-  const config = getConfig(key);
-  config.value = value;
+  schema.write(() => {
+    const config = schema.objects('config').filtered(`key = "${key}"`)[0];
+    config.value = value;
+  });
 };
 
 // 모든 정보 삭제

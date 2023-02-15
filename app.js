@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import 'react-native-gesture-handler';
 import {Text} from 'react-native';
-import {requestPermission, initConfig} from './src/loader/loader';
+import requestPermission from './src/loader/loader';
 import SplashScreen from 'react-native-splash-screen';
 import NaviContainer from './src/navigation';
 
@@ -18,9 +18,6 @@ export default function App() {
 
   // 권한 취득
   requestPermission();
-
-  // 설정값 초기화
-  initConfig();
 
   return <NaviContainer />;
 }

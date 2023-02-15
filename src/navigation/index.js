@@ -11,12 +11,22 @@ import Loading from '../screen/loading';
 import NearbyPharmacy from '../screen/nearby_pharmacy';
 import PharmacyInfo from '../screen/pharmacy_info';
 import PillStore from '../screen/pill_store';
+import MisuseModal from '../screen/misuse_modal';
+import {ConfigService} from '../services';
 
 const Stack = createStackNavigator();
 const NaviContainer = () => {
+  ConfigService.initConfig();
+
+  const visibleMisUseWarnModal = {
+    agree: false,
+    decline: true,
+  }[ConfigService.getMisUseAgree().value];
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="main">
+      <Stack.Navigator
+        initialRouteName={visibleMisUseWarnModal ? 'misuseModal' : 'main'}>
         <Stack.Screen
           name="main"
           component={Main}
@@ -68,6 +78,12 @@ const NaviContainer = () => {
         <Stack.Screen
           name="pillStore"
           component={PillStore}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="misuseModal"
+          component={MisuseModal}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

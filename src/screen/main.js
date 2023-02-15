@@ -1,5 +1,6 @@
-import * as React from 'react';
-import {SafeAreaView} from 'react-native';
+import React, {useEffect} from 'react';
+import RNExitApp from 'react-native-exit-app';
+import {SafeAreaView, BackHandler} from 'react-native';
 import * as Components from '../components';
 import {MainStyles} from '../styles';
 
@@ -8,8 +9,24 @@ const {styles} = MainStyles;
 function Main(props) {
   const {navigation} = props;
 
+  useEffect(() => {
+    const backAction = () => {
+      setTimeout(() => {
+        RNExitApp.exitApp();
+      }, 100);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  });
+
   return (
-    <SafeAreaView style={MainStyles.styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* 로고 이미지 */}
       <Components.MainComponents.LogoImage
         navigation={navigation}

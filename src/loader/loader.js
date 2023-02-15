@@ -1,6 +1,5 @@
 import {ToastAndroid, PermissionsAndroid} from 'react-native';
 import RNExitApp from 'react-native-exit-app';
-import {addConfig, getAllConfig} from '../database/queries/config';
 
 // 카메라, 내ㆍ외장 스토리지, GPS 권한 요청
 async function requestPermission() {
@@ -39,18 +38,4 @@ async function requestPermission() {
   return;
 }
 
-/**
- * 설정값 초기화
- */
-async function initConfig() {
-  const configKeys = (await getAllConfig()).map(v => v.key);
-  const essentialConfigs = ['misuseAgree', 'searchAgree'];
-
-  essentialConfigs.forEach(v => {
-    if (!configKeys.includes(v)) {
-      addConfig({key: v, value: 'decline'});
-    }
-  });
-}
-
-export {requestPermission, initConfig};
+export default requestPermission;
