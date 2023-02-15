@@ -1,8 +1,11 @@
 import {ConfigQuery} from '../database/queries';
 
-async function getMisUseAgree() {
-  const misUseValue = await ConfigQuery.getConfig('misuseAgree');
-  return misUseValue;
+function getMisUseAgree() {
+  return ConfigQuery.getConfig('misuseAgree');
 }
 
-export {getMisUseAgree};
+function updateMisUseAgree(value = 'decline') {
+  return ConfigQuery.updateConfig({key: 'misuseAgree', value});
+}
+
+export {getMisUseAgree, updateMisUseAgree};
