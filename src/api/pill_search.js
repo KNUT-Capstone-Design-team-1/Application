@@ -12,16 +12,16 @@ async function sendImage(navigation, base64Url) {
     const url =
       'http://222.108.233.118:17261/pill-search/image?skip=0&limit=20';
 
-    const result = await axios(url, {
+    const {data: response} = await axios(url, {
       method: 'POST',
       headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-      body: JSON.stringify({base64Url}),
+      data: {base64Url},
       timeout: 20000,
     });
 
-    if (!result.isSuccess) {
+    if (!response.isSuccess) {
       ToastAndroid.showWithGravity(
-        `검색 실패: ${result.message}`,
+        `검색 실패: ${response.message}`,
         ToastAndroid.SHORT,
         ToastAndroid.CENTER,
       );
@@ -29,7 +29,7 @@ async function sendImage(navigation, base64Url) {
       return;
     }
 
-    if (result.data.length === 0) {
+    if (!response.data || response.data.length === 0) {
       ToastAndroid.showWithGravity(
         '일치하는 알약 정보가 없습니다.',
         ToastAndroid.SHORT,
@@ -45,7 +45,7 @@ async function sendImage(navigation, base64Url) {
       ToastAndroid.CENTER,
     );
 
-    navigation.navigate('pillInfoList', result.data);
+    navigation.navigate('pillInfoList', response.data);
     return;
   } catch (e) {
     ToastAndroid.showWithGravity(

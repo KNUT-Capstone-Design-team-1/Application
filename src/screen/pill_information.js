@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, BackHandler} from 'react-native';
 import * as Components from '../components';
-import * as Styles from '../styles';
+import {PillInformationStyles} from '../styles';
+
+const {styles} = PillInformationStyles;
 
 function PillInformation(props) {
   const {navigation, route} = props;
@@ -23,15 +25,13 @@ function PillInformation(props) {
   });
 
   return (
-    <SafeAreaView style={Styles.PillInformationStyles.styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* 헤더 */}
-      <Components.PillInformationComponents.Header
-        style={Styles.PillInformationStyles.styles.header}
-      />
+      <Components.PillInformationComponents.Header style={styles.header} />
 
       {/* 알약 이미지 */}
       <Components.PillInformationComponents.PillImage
-        style={Styles.PillInformationStyles.styles.pillImage}
+        style={styles.pillImage}
         image={pillDetail.ITEM_IMAGE}
       />
 
@@ -39,11 +39,11 @@ function PillInformation(props) {
       <Components.PillInformationComponents.PillInfo pillDetail={pillDetail} />
 
       {/* 버튼 컨테이너 */}
-      <SafeAreaView style={Styles.PillInformationStyles.styles.buttonContainer}>
+      <SafeAreaView style={styles.buttonContainer}>
         {/* 내 주변 약국 화면 이동 버튼 */}
         <Components.PillInformationComponents.NearByPharmacyButton
           navigation={navigation}
-          style={Styles.PillInformationStyles.styles.opacity}
+          style={styles.opacity}
         />
 
         {isManaging ? (
@@ -51,20 +51,20 @@ function PillInformation(props) {
           <Components.PillInformationComponents.DeleteButton
             navigation={navigation}
             ITEM_SEQ={pillDetail.ITEM_SEQ}
-            style={Styles.PillInformationStyles.styles.opacity}
+            style={styles.opacity}
           />
         ) : (
           // 저장 버튼
           <Components.PillInformationComponents.SaveButton
             pillDetail={pillDetail}
-            style={Styles.PillInformationStyles.styles.opacity}
+            style={styles.opacity}
           />
         )}
 
         {/* 메인 화면 이동 버튼*/}
         <Components.PillInformationComponents.MainButton
           navigation={navigation}
-          style={Styles.PillInformationStyles.styles.opacity}
+          style={styles.opacity}
         />
       </SafeAreaView>
     </SafeAreaView>

@@ -1,40 +1,36 @@
 import * as React from 'react';
 import {SafeAreaView} from 'react-native';
 import * as Components from '../components';
-import * as Styles from '../styles';
+import {PillSearchStyles} from '../styles';
+
+const {styles} = PillSearchStyles;
 
 function PillSearch(props) {
   const {navigation} = props;
 
   return (
-    <SafeAreaView style={Styles.PillSearchStyles.styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* 헤더 */}
-      <Components.PillSearchComponents.Header
-        style={Styles.PillSearchStyles.styles.header}
-      />
+      <Components.PillSearchComponents.Header style={styles.header} />
 
       {/* 예시 이미지 */}
-      <Components.PillSearchComponents.ExampleImage
-        style={Styles.PillSearchStyles.styles.image}
-      />
+      <Components.PillSearchComponents.ExampleImage style={styles.image} />
 
       {/* 안내사항 */}
-      <Components.PillSearchComponents.GuidelineText
-        style={Styles.PillSearchStyles.styles.guideline}
-      />
+      <Components.PillSearchComponents.GuidelineText style={styles.guideline} />
 
       {/* 버튼 컨테이너 */}
-      <SafeAreaView style={Styles.PillSearchStyles.styles.buttonContainer}>
+      <SafeAreaView style={styles.buttonContainer}>
         {/* 촬영 버튼 */}
         <Components.PillSearchComponents.TakeButton
           navigation={navigation}
-          style={Styles.PillSearchStyles.styles.opacity}
+          style={styles.opacity}
         />
 
         {/* 갤러리 버튼 */}
         <Components.PillSearchComponents.GalleryButton
           navigation={navigation}
-          style={Styles.PillSearchStyles.styles.opacity}
+          style={styles.opacity}
         />
       </SafeAreaView>
     </SafeAreaView>

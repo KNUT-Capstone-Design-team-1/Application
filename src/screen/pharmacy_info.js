@@ -1,24 +1,26 @@
 import * as React from 'react';
 import {SafeAreaView} from 'react-native';
 import * as Components from '../components';
-import * as Styles from '../styles';
+import {PharmacyInformationStyles} from '../styles';
+
+const {styles} = PharmacyInformationStyles;
 
 function PharmacyInfo(props) {
   const {navigation, route} = props;
   const {params} = route;
 
   return (
-    <SafeAreaView style={Styles.PharmacyInformationStyles.styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* 헤더 */}
       <Components.PharmacyInformationComponents.Header
         navigation={navigation}
-        style={Styles.PharmacyInformationStyles.styles.header}
+        style={styles.header}
       />
 
       {/* 약국 정보 */}
       <Components.PharmacyInformationComponents.PharmacyInfo
         pharmacyUrl={params.pharmacyUrl}
-        style={Styles.PharmacyInformationStyles.styles.webView}
+        style={styles.webView}
       />
     </SafeAreaView>
   );

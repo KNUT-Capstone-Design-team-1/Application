@@ -1,17 +1,17 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import * as Components from '../components';
-import * as Styles from '../styles';
+import {NearbyPharmacyStyles} from '../styles';
+
+const {styles} = NearbyPharmacyStyles;
 
 function NearbyPharmacy(props) {
   const {navigation} = props;
 
   return (
-    <SafeAreaView style={Styles.NearbyPharmacyStyles.styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* 헤더 */}
-      <Components.NearbyPharmacyComponents.Header
-        style={Styles.NearbyPharmacyStyles.styles.header}
-      />
+      <Components.NearbyPharmacyComponents.Header style={styles.header} />
 
       {/* 약국 버튼 리스트 */}
       <Components.NearbyPharmacyComponents.PharmacyInfoButtonList
