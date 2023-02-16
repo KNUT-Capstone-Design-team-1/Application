@@ -1,0 +1,42 @@
+# application build image
+FROM openJDK:8
+
+# environment variable setting for apt-get error prevention 
+ENV DEBIAN_FRONTEND=noninteractive
+
+# essential utility install
+RUN apt-get update && apt-get install -y unzip wget vim curl
+
+# install gradle 7.2 & environment variable setting
+ADD https://services.gradle.org/distributions/gradle-7.2-all.zip /opt/
+RUN unzip /opt/gradle-7.2-all.zip -d /opt/gradle
+ENV GRADLE_HOME /opt/gradle/gradle-7.2
+ENV PATH $GRADLE_HOME/bin:$PATH
+
+# install android SDK & environment variable setting
+RUN apt-get install -y mc && mkdir /var/android-sdk
+ADD https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip /var/
+RUN unzip /opt/commandlinetools-linux-7583922_latest.zip -d /var/android-sdk
+ENV ANDROID_HOME /var/android-sdk/
+ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+RUN chmod -R 755 $ANDROID_HOME
+RUN rm -r /var/commandlinetools-linux-7583922_latest.zip
+
+RUN yes | /var/android-sdk/tools/bin/sdkmanager --update
+RUN yes | /var/android-sdk/tools/bin/sdkmanager --licenses
+RUN yes | /var/android-sdk/tools/bin/sdkmanager --list
+RUN yes | /var/android-sdk/tools/bin/sdkmanager \
+"tools" \
+"platform-tools" \
+"platforms;android-30" \
+"build-tools;30.0.0" \
+"build-tools;30.0.1" \
+"build-tools;30.0.2" \
+"build-tools;30.0.3" \
+"platforms;android-29" \
+"build-tools;29.0.0" \
+"build-tools;29.0.1" \
+"build-tools;29.0.2" \
+"extras;android;m2repository" \
+"extras;google;m2repository"
+
