@@ -14,7 +14,7 @@ const Header = props => {
   const {style} = props;
   return (
     <SafeAreaView style={style}>
-      <Text style={styles.headerText}>주의사항</Text>
+      <Text style={styles.headerText}>약관</Text>
     </SafeAreaView>
   );
 };
@@ -22,25 +22,27 @@ const Header = props => {
 const misuseText = () => {
   return (
     <Text style={styles.text}>
-      알약을 촬영하여 검색하는 경우 {'\n'}검색결과가 부정확할 수 있으니
-      {'\n\n'}복용은&nbsp;
+      본 서비스는 아직 개발 중인 서비스로, 알약 검색 기능을 통해 얻은 정보가
+      부정확할 수 있습니다.
+      {'\n\n'}
       <Text style={styles.textHilight}>
-        반드시 의사 혹은 약사와의 상담을 통해 결정하시는 것을 권장합니다.
+        이에 따라 본 서비스를 통해 약물 복용을 결정하는 것을 절대 금하며, 반드시
+        의사 혹은 약사와의 상담을 통해 복용을 결정하는 것을 권장합니다.{'\n\n'}
       </Text>
-      {'\n\n'}해당 서비스를 통해 얻은 정보를 통한 약품의 복용을 금하며 이에 따른
-      약물 약물 오남용에 대해서 사용자의 책임임을 동의합니다.
+      약관의 내용을 이해 했으며, 약물 오남용과 관련된 사항들은 사용자의 책임임을
+      동의합니다.
     </Text>
   );
 };
 
-const misUseAgreeButton = props => {
+const serviceAgreeButton = props => {
   const {navigation} = props;
 
   return (
     <TouchableOpacity
       style={styles.button}
       onPress={() => {
-        ConfigService.updateMisUseAgree('agree');
+        ConfigService.updateserviceAgree('agree');
         navigation.navigate('main');
       }}>
       <Text style={styles.buttonText}>동의</Text>
@@ -54,7 +56,7 @@ const misUseDeclineButton = () => {
       style={styles.button}
       onPress={() => {
         ToastAndroid.showWithGravity(
-          '주의사항에 동의하지 않아 앱을 종료합니다.',
+          '약관에 동의하지 않아 앱을 종료합니다.',
           ToastAndroid.SHORT,
           ToastAndroid.CENTER,
         );
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: '10%',
-    fontSize: RFValue(30, 720),
+    fontSize: RFValue(27, 720),
     fontFamily: 'Jua-Regular',
   },
   textHilight: {color: 'red'},
@@ -93,4 +95,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {Header, misuseText, misUseAgreeButton, misUseDeclineButton};
+export {Header, misuseText, serviceAgreeButton, misUseDeclineButton};

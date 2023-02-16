@@ -2,7 +2,7 @@ import {ConfigQuery} from '../database/queries';
 
 function initConfig() {
   const configKeys = ConfigQuery.getAllConfig().map(v => v.key);
-  const essentialConfigs = ['misuseAgree', 'searchAgree'];
+  const essentialConfigs = ['serviceAgree', 'searchAgree'];
 
   essentialConfigs.forEach(v => {
     if (!configKeys.includes(v)) {
@@ -11,12 +11,12 @@ function initConfig() {
   });
 }
 
-function getMisUseAgree() {
-  return ConfigQuery.getConfig('misuseAgree')[0];
+function getserviceAgree() {
+  return ConfigQuery.getConfig('serviceAgree')[0];
 }
 
-function updateMisUseAgree(value = 'decline') {
-  return ConfigQuery.updateConfig({key: 'misuseAgree', value});
+function updateserviceAgree(value = 'decline') {
+  return ConfigQuery.updateConfig({key: 'serviceAgree', value});
 }
 
-export {initConfig, getMisUseAgree, updateMisUseAgree};
+export {initConfig, getserviceAgree, updateserviceAgree};

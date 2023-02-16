@@ -7,7 +7,7 @@ import * as PillInfoListStyles from './pill_info_list';
 import * as PillInformationStyles from './pill_information';
 import * as PillSearchStyles from './pill_search';
 import * as PillStoreStyles from './pill_store';
-import * as ModalStyles from './modal';
+import * as TermsOfServiceStyles from './terms_of_service';
 
 export {
   LoadingStyles,
@@ -19,5 +19,5 @@ export {
   PillInformationStyles,
   PillSearchStyles,
   PillStoreStyles,
-  ModalStyles,
+  TermsOfServiceStyles,
 };

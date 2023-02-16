@@ -6,7 +6,7 @@ import * as PillInfoListComponents from './pill_info_list';
 import * as PillInformationComponents from './pill_information';
 import * as PillSearchComponents from './pill_search';
 import * as PillStoreComponents from './pill_store';
-import * as ModalComponents from './modal';
+import * as TermsOfServiceComponents from './terms_of_service';
 
 export {
   MainComponents,
@@ -17,5 +17,5 @@ export {
   PillInformationComponents,
   PillSearchComponents,
   PillStoreComponents,
-  ModalComponents,
+  TermsOfServiceComponents,
 };
