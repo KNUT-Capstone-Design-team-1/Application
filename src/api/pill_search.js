@@ -1,7 +1,8 @@
 import {ToastAndroid} from 'react-native';
 import axios from 'axios';
+import {mainServerAddress} from '../../res/config.json';
 
-async function sendImage(navigation, base64Url) {
+async function sendImage(base64Url) {
   ToastAndroid.showWithGravity(
     '검색중..',
     ToastAndroid.SHORT,
@@ -9,8 +10,10 @@ async function sendImage(navigation, base64Url) {
   );
 
   try {
-    const url =
-      'http://222.108.233.118:17261/pill-search/image?skip=0&limit=20';
+    let skip = 0;
+    let limit = 20;
+
+    const url = `${mainServerAddress}/pill-search/image?skip=${skip}&limit=${limit}`;
 
     const {data: response} = await axios(url, {
       method: 'POST',
@@ -25,18 +28,16 @@ async function sendImage(navigation, base64Url) {
         ToastAndroid.SHORT,
         ToastAndroid.CENTER,
       );
-      navigation.navigate('pictureCheck');
-      return;
+      return [];
     }
 
     if (!response.data || response.data.length === 0) {
       ToastAndroid.showWithGravity(
-        '일치하는 알약 정보가 없습니다.',
+        '검색 결과가 없습니다.',
         ToastAndroid.SHORT,
         ToastAndroid.CENTER,
       );
-      navigation.navigate('pictureCheck');
-      return;
+      return [];
     }
 
     ToastAndroid.showWithGravity(
@@ -45,16 +46,14 @@ async function sendImage(navigation, base64Url) {
       ToastAndroid.CENTER,
     );
 
-    navigation.navigate('pillInfoList', response.data);
-    return;
+    return response.data;
   } catch (e) {
     ToastAndroid.showWithGravity(
       '서버 요청 중 오류가 발생했습니다.',
       ToastAndroid.SHORT,
       ToastAndroid.CENTER,
     );
-    navigation.navigate('pictureCheck');
-    return;
+    return [];
   }
 }
 

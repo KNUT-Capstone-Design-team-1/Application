@@ -1,14 +1,10 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, Image, BackHandler} from 'react-native';
 import {LoadingStyles} from '../styles';
-import * as Api from '../api';
 
 const {styles} = LoadingStyles;
 
-function Loading(props) {
-  const {navigation, route} = props;
-  const {params} = route;
-
+function Loading() {
   useEffect(() => {
     const backAction = () => {
       return true;
@@ -21,8 +17,6 @@ function Loading(props) {
 
     return () => backHandler.remove();
   });
-
-  Api.PillSearchApi.sendImage(navigation, params.base64Url);
 
   return (
     <SafeAreaView style={styles.loadingImageViewSt}>

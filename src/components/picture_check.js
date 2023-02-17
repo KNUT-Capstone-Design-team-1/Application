@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {executeCamera, executeGallery} from '../services/pill_search';
+import * as Api from '../api';
 
 const Header = props => {
   const {style} = props;
@@ -31,8 +32,10 @@ const SearchButton = props => {
   return (
     <TouchableOpacity
       style={style}
-      onPress={() => {
-        navigation.navigate('loading', {isPillManaging: 0, base64Url});
+      onPress={async () => {
+        navigation.navigate('loading');
+        const pillInfoList = await Api.PillSearchApi.sendImage(base64Url);
+        navigation.navigate('pillInfoList', {pillInfoList});
       }}>
       <Image style={styles.image} source={require('../../image/search.png')} />
     </TouchableOpacity>

@@ -26,7 +26,7 @@ const misuseText = () => {
       부정확할 수 있습니다.
       {'\n\n'}
       <Text style={styles.textHilight}>
-        이에 따라 본 서비스를 통해 약물 복용을 결정하는 것을 절대 금하며, 반드시
+        이에 따라 본 서비스를 통해 약물 복용을 결정하는 것은 절대 금하며, 반드시
         의사 혹은 약사와의 상담을 통해 복용을 결정하는 것을 권장합니다.{'\n\n'}
       </Text>
       약관의 내용을 이해 했으며, 약물 오남용과 관련된 사항들은 사용자의 책임임을
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: '10%',
-    fontSize: RFValue(27, 720),
-    fontFamily: 'Jua-Regular',
+    fontSize: RFValue(25, 720),
+    fontWeight: 'bold',
   },
   textHilight: {color: 'red'},
   button: {

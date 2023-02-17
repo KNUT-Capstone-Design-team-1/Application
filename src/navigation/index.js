@@ -15,6 +15,7 @@ import TermsOfService from '../screen/terms_of_service';
 import {ConfigService} from '../services';
 
 const Stack = createStackNavigator();
+
 const NaviContainer = () => {
   ConfigService.initConfig();
 
