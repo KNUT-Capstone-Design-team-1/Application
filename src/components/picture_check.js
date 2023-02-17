@@ -34,8 +34,8 @@ const SearchButton = props => {
       style={style}
       onPress={async () => {
         navigation.navigate('loading');
-        const pillInfoList = await Api.PillSearchApi.sendImage(base64Url);
-        navigation.navigate('pillInfoList', {pillInfoList});
+        const serverRes = await Api.PillSearchApi.sendImage(base64Url);
+        navigation.navigate('pillInfoList', {serverRes});
       }}>
       <Image style={styles.image} source={require('../../image/search.png')} />
     </TouchableOpacity>

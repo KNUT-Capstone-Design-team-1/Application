@@ -7,7 +7,7 @@ const {styles} = PillInfoListStyles;
 
 function PillInfoList(props) {
   const {navigation, route} = props;
-  const {pillInfoList} = route.params;
+  const {pillInfoList, recogResult} = route.params.serverRes;
 
   useEffect(() => {
     const backAction = () => {
@@ -31,7 +31,8 @@ function PillInfoList(props) {
       {/* 알약 정보 버튼 리스트 */}
       <Components.PillInfoListComponents.PillInfoButtonList
         navigation={navigation}
-        PillInfoList={pillInfoList}
+        pillInfoList={pillInfoList}
+        recogResult={recogResult}
       />
     </SafeAreaView>
   );

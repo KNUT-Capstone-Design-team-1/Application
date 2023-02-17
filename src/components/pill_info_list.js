@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {
   StyleSheet,
@@ -6,7 +6,9 @@ import {
   SafeAreaView,
   Text,
   FlatList,
+  Image,
 } from 'react-native';
+import * as Api from '../api';
 
 const Header = props => {
   const {style} = props;
@@ -19,7 +21,12 @@ const Header = props => {
 };
 
 const PillInfoButtonList = props => {
-  const {navigation, PillInfoList} = props;
+  const {navigation, pillInfoList, recogResult} = props;
+  const limit = 20;
+
+  const [outputList, setOutputList] = useState(pillInfoList);
+  const [skip, setSkip] = useState(20);
+  const [scrollFlag, setScrollFlag] = useState(true);
 
   // 알약 개요정보 버튼 목록 <스크롤>
   const renderList = ({item}) => (
@@ -32,6 +39,7 @@ const PillInfoButtonList = props => {
             isManaging: false,
           });
         }}>
+        <Image style={styles.pillImage} source={{uri: item.ITEM_IMAGE}} />
         <Text style={styles.pillName}>{item.ITEM_NAME}</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -39,9 +47,23 @@ const PillInfoButtonList = props => {
 
   return (
     <FlatList
-      data={PillInfoList}
+      data={outputList}
       renderItem={renderList}
       keyExtractor={(item, index) => index.toString()}
+      onEndReached={async () => {
+        setScrollFlag(false);
+        const result = await Api.PillSearchApi.requestRecognitionSearch(
+          recogResult,
+          skip,
+          limit,
+        );
+
+        setOutputList([...outputList, ...result]);
+        setScrollFlag(true);
+        setSkip(skip + limit);
+      }}
+      scrollEnabled={scrollFlag}
+      onEndReachedThreshold={1}
     />
   );
 };
@@ -73,13 +95,21 @@ const styles = StyleSheet.create({
   list: {
     height: '100%',
     width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+    paddingTop: '5%',
+    paddingBottom: '5%',
     borderRadius: RFValue(8, 720),
+  },
+  pillImage: {
+    height: '100%',
+    width: '30%',
+    resizeMode: 'stretch',
   },
   pillName: {
     color: 'black',
-    fontSize: RFValue(30, 720),
+    flexShrink: 1,
+    fontSize: RFValue(25, 720),
     fontFamily: 'Jua-Regular',
   },
 });
