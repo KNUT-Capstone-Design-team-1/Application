@@ -42,14 +42,15 @@ const PillList = props => {
   const renderList = ({item}) => (
     <SafeAreaView style={styles.listContainer}>
       <TouchableOpacity
-        style={styles.listOpacity}
+        style={styles.opacityList}
         onPress={() =>
           navigation.navigate('pillInformation', {
             pillDetail: item,
             isManaging: true,
           })
         }>
-        <Text style={styles.listText}>{item.ITEM_NAME}</Text>
+        <Image style={styles.pillImage} source={{uri: item.ITEM_IMAGE}} />
+        <Text style={styles.pillName}>{item.ITEM_NAME}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -109,20 +110,28 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 1,
-    margin: '3%',
+    margin: '4%',
     backgroundColor: '#BDECB6',
     borderRadius: RFValue(8, 720),
   },
-  listOpacity: {
+  opacityList: {
     height: '100%',
     width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
+    paddingTop: '5%',
+    paddingBottom: '5%',
     borderRadius: RFValue(8, 720),
   },
-  listText: {
+  pillImage: {
+    height: '100%',
+    width: '30%',
+    resizeMode: 'stretch',
+  },
+  pillName: {
     color: 'black',
-    fontSize: RFValue(30, 720),
+    flexShrink: 1,
+    fontSize: RFValue(25, 720),
     fontFamily: 'Jua-Regular',
   },
 });

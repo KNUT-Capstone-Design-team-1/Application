@@ -30,9 +30,9 @@ const PillInfoButtonList = props => {
 
   // 알약 개요정보 버튼 목록 <스크롤>
   const renderList = ({item}) => (
-    <SafeAreaView style={styles.flat}>
+    <SafeAreaView style={styles.listContainer}>
       <TouchableOpacity
-        style={styles.list}
+        style={styles.opacityList}
         onPress={() => {
           navigation.navigate('pillInformation', {
             pillDetail: item,
@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
     fontSize: RFValue(30, 720),
     fontFamily: 'Jua-Regular',
   },
-  flat: {
+  listContainer: {
     flex: 1,
     margin: '4%',
     backgroundColor: '#BDECB6',
     borderRadius: RFValue(8, 720),
   },
-  list: {
+  opacityList: {
     height: '100%',
     width: '100%',
     alignItems: 'center',
