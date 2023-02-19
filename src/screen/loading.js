@@ -23,7 +23,7 @@ function Loading() {
       {/* 로딩 이미지 */}
       <Image
         style={styles.loadingImage}
-        source={require('../../image/loading_screen.png')}
+        source={require('../../image/loading_screen_new.png')}
       />
     </SafeAreaView>
   );
