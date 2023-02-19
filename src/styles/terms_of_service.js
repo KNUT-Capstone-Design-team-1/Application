@@ -13,10 +13,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#BDECB6',
   },
+  scrollView: {
+    backgroundColor: 'red',
+  },
   buttonContainer: {
-    flex: 1,
+    height: '15%',
+    width: '100%',
     alignItems: 'flex-end',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     flexDirection: 'row',
   },
 });

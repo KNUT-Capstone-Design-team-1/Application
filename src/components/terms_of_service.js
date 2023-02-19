@@ -83,14 +83,16 @@ const styles = StyleSheet.create({
   },
   textHilight: {color: 'red'},
   button: {
-    margin: '10%',
+    width: '45%',
+    marginVertical: '5%',
+    marginHorizontal: '1%',
     padding: '5%',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#81C147',
-    borderRadius: 20,
   },
   buttonText: {
-    padding: '5%',
-    fontSize: RFValue(30, 720),
+    fontSize: RFValue(25, 720),
     fontFamily: 'Jua-Regular',
   },
 });
