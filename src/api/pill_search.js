@@ -16,7 +16,7 @@ async function sendImage(base64Url, skip = 0, limit = 20) {
       method: 'POST',
       headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
       data: {base64Url},
-      timeout: 20000,
+      timeout: 30000,
     });
 
     if (!response.isSuccess) {
@@ -68,7 +68,7 @@ async function requestRecognitionSearch(recogData, skip = 0, limit = 20) {
       method: 'GET',
       headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
       data: recogData,
-      timeout: 20000,
+      timeout: 30000,
     });
 
     if (!response.isSuccess) {

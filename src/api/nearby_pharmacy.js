@@ -5,7 +5,7 @@ async function callNearbyPharmacyApi(position) {
 
   const response = await axios(url, {
     headers: {Authorization: 'KakaoAK 33a8b02db1a0de6d37b4d7de43955e46'},
-    timeout: 20000,
+    timeout: 30000,
   });
 
   return response.data;

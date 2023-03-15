@@ -15,13 +15,13 @@ function TermsOfService(props) {
 
       {/* 경고 문구 */}
       <ScrollView styles={styles.scrollView}>
-        <TermsOfServiceComponents.misuseText />
+        <TermsOfServiceComponents.Terms />
       </ScrollView>
 
       {/* 동의 및 거부 버튼 */}
       <SafeAreaView style={styles.buttonContainer}>
-        <TermsOfServiceComponents.serviceAgreeButton navigation={navigation} />
-        <TermsOfServiceComponents.misUseDeclineButton />
+        <TermsOfServiceComponents.TermsAgreeButton navigation={navigation} />
+        <TermsOfServiceComponents.TermsDeclineButton />
       </SafeAreaView>
     </SafeAreaView>
   );
