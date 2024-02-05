@@ -12,12 +12,17 @@ async function sendImage(base64Url, skip = 0, limit = 20) {
   try {
     const url = `${mainServerAddress}/pill-search/image?skip=${skip}&limit=${limit}`;
 
-    const {data: response} = await axios(url, {
-      method: 'POST',
-      headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
-      data: {base64Url},
-      timeout: 30000,
-    });
+    const {data: response} = await axios.post(
+      url,
+      {data: {base64Url}},
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        timeout: 30000,
+      },
+    );
 
     if (!response.isSuccess) {
       ToastAndroid.showWithGravity(
