@@ -64,5 +64,4 @@ buck-out/
 *.pem
 gradle.properties
 
-package-lock.json
 config.json
